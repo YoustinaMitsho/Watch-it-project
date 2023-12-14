@@ -1,0 +1,6 @@
+20, female,egypt ,hager,hussien
+35,male,rosia,ahmed,ali
+40, male,america,lala,john
+57,female,france,jak,welly
+22,female,egypt,aya,yehia
+37,male,koria,usif,mohamed
