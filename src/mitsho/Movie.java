@@ -209,7 +209,7 @@ public class Movie implements ReadFiles {
         }
     }
 
-    public ArrayList<Genre> ShowMovieGenre(String MovieName) {
+    public static ArrayList<Genre> ShowMovieGenre(String MovieName) {
         for (Movie movie : MoviesList) {
             if (MovieName.equals(movie.getMovieTitle())) {
                 return movie.MovieGenre;
@@ -227,6 +227,44 @@ public class Movie implements ReadFiles {
         MovieDirector.add(d);
     }
 
+    public static void MovieSearch_bydirector(String directorFname,String directorLname) {
+        for (director director : director.director_list) {
+            if (directorFname.equals(director.F_name) && directorLname.equals(director.L_name)) {
+                System.out.println( "his firstname:"+director.F_name );
+                System.out.println("his lastname:" + director.L_name);
+                System.out.println( " his nationality:"+director.Nationality);
+                System.out.println( "his director Age"+director.Age);
+                for (Movie movie : MoviesList) {
+                    if ((directorFname+" "+directorLname).equals(movie.MovieDirector)) {
+                        System.out.println(movie.getMovieTitle());
+
+                    } else {
+                        System.out.println(" this director has no movies");
+                    }
+                }
+            }
+        }
+    }
+
+
+    public static void MovieSearch_byActor(String ActorFname,String ActorLname) {
+        for (cast cast : cast.cast_list) {
+            if (ActorFname.equals(cast.F_name) && ActorLname.equals(cast.L_name)) {
+                System.out.println( "his firstname:"+cast.F_name );
+                System.out.println("his lastname:" + cast.L_name);
+                System.out.println( " his nationality:"+cast.Nationality);
+                System.out.println( "his director Age"+cast.Age);
+                for (Movie movie : MoviesList) {
+                    if ((ActorFname+" "+ActorLname).equals(movie.MovieDirector)) {
+                        System.out.println(movie.getMovieTitle());
+
+                    } else {
+                        System.out.println("  no movies");
+                    }
+                }
+            }
+        }
+    }
     public ArrayList<cast> SearchCastByName(String name) {
         ArrayList<cast> result = new ArrayList<cast>();
         for (cast castData : MovieCast) {
@@ -247,7 +285,7 @@ public class Movie implements ReadFiles {
 
     }
 
-    public ArrayList<Movie> UpCommingMovies(){
+    public static ArrayList<Movie> UpCommingMovies(){
         ArrayList<Movie> UpCommingMovie = new ArrayList<>();
         for (Movie m: MoviesList) {
             if(m.MovieDate > 2023){

@@ -14,7 +14,7 @@ import java.util.SplittableRandom;
 
 public class cast extends movie_person implements ReadFiles {
 
-  static   ArrayList<cast> cast_list = new ArrayList<cast>();
+  public static ArrayList<cast> cast_list = new ArrayList<cast>();
 
 
     cast(int age, String Gender, String nationality, String f_name, String l_name) {

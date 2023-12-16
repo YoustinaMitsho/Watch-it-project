@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class director extends movie_person {
 
-    static ArrayList<director> director_list = new ArrayList<director>();
+    public static ArrayList<director> director_list = new ArrayList<director>();
 
     director(int age, String Gender, String nationality, String f_name, String l_name) {
         super(age, Gender, nationality, f_name, l_name);
