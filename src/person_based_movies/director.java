@@ -16,7 +16,7 @@ public class director extends movie_person {
 
     public static ArrayList<director> director_list = new ArrayList<director>();
 
-    director(int age, String Gender, String nationality, String f_name, String l_name) {
+    public director(int age, String Gender, String nationality, String f_name, String l_name) {
         super(age, Gender, nationality, f_name, l_name);
 
     }
@@ -65,14 +65,10 @@ public class director extends movie_person {
 
     public String displaydiretor(){
         //int age, String Gender, String nationality, String f_name, String l_name
-        return Age+","+Gender+","+Nationality+","+F_name+","+L_name;
+        return Age+","+Gender+","+getNationality()+","+getF_name()+","+getL_name();
 
 
     }
-
-
-
-
     public static void WriteFile(String Path,ArrayList<director> Directorwite) {
         try {
             if (Path.equals("movie_persion_di.txt")) {

@@ -21,25 +21,30 @@ import java.util.List;
 
 public class Movie implements ReadFiles {
     static ArrayList<Movie> MoviesList = new ArrayList<Movie>();
-    public int MovieId;
-    public String MovieTitle;
-    public int MovieDate;
-    public int MovieTime;
+
+    public static ArrayList<Movie> getMoviesList() {
+        return MoviesList;
+    }
+
+    private int MovieId;
+    private String MovieTitle;
+     int MovieDate;
+     int MovieTime;
     ArrayList<cast> MovieCast = new ArrayList<cast>();   // Cast class to be done later
     ArrayList<Genre> MovieGenre = new ArrayList<Genre>(); // Genre class to be done later
     ArrayList<director> MovieDirector = new ArrayList<director>();  // Director class to be done later
-    public String MovieLanguage; // Is it a class like director?
-    public int IMDB_Score;
-    public int UserRating;
-    public String MovieCountry;
-    public String  MovieBudget;
-    public String  MovieRevenue;
-    public static boolean is_watched;
+     String MovieLanguage; // Is it a class like director?
+     int IMDB_Score;
+     int UserRating;
+     String MovieCountry;
+     String  MovieBudget;
+     String  MovieRevenue;
+    public static boolean is_watched=false;
     public static boolean is_favourite;
     public static boolean is_WatchLater;
    // public Image MoviePoster;
     String genera;
-    public String discription;
+     String discription;
 
     String F1_cast;
     String s1_cast;
@@ -51,7 +56,7 @@ public class Movie implements ReadFiles {
     String FnameDirector;
     public Movie(int movieId, String movieTitle, int movieDate, int movieTime, String F1_cast, String s1_cast, String f2_cast, String c2_cast, String f3_cast, String c3_cast, String genera, String FnameDirector, String snameDirector, String movieLanguage, int IMDB_Score , String  movieCountry, String movieBudget, String movieRevenue, int UserRating, String Discription) {
         MovieId = movieId;
-        MovieTitle = movieTitle;
+        this.MovieTitle = movieTitle;
         MovieDate = movieDate;
         MovieTime = movieTime;
         MovieLanguage = movieLanguage;
@@ -127,7 +132,8 @@ public class Movie implements ReadFiles {
         this.discription=discription;
     }
 
-    public static ArrayList<Movie> Read(String Path) throws IOException {
+    public static ArrayList<Movie> Read(String Path) throws IOException
+    {
 
         // Create a FileReader object to read the file
         FileReader fileReader = new FileReader(Path);
@@ -165,8 +171,35 @@ public class Movie implements ReadFiles {
         return MoviesList;
     }
 
+   /* public ArrayList<Movie> getArrayofwatched() {
+        //ArrayList<Movie>mo=new ArrayList<Watched>();
+       // wa=new ArrayList<Watched>();
+        //return super.;
+    }*/
+
+    public int getMovieTime() {
+        return MovieTime;
+    }
+    public int getMovieId() {
+        return MovieId;
+    }
+    public int getMovieDate() {
+        return MovieDate;
+    }
+
+    public String getGenera() {
+        return genera;
+    }
+
+    public int getUserRating() {
+        return UserRating;
+    }
 
 
+
+public Movie(){}
+
+    //in fav
     public Movie(boolean Is_it, String which){
         if(which.equals("fav")){
             this.is_favourite = Is_it;
@@ -178,7 +211,8 @@ public class Movie implements ReadFiles {
         }
     }
 
-    public String getMovieTitle() {
+    public String getMovieTitle()
+    {
         return MovieTitle;
     }
 
@@ -191,84 +225,104 @@ public class Movie implements ReadFiles {
     //}
 
     public static void MovieSearch(String MovieName) {
+        boolean flagOfSearch=false;
         for (Movie movie : MoviesList) {
             if (MovieName.equals(movie.getMovieTitle())) {
-                System.out.println(movie.displaymovie());
-            }else {
-                System.out.println("Sorry, This movie isn't found!");
+                System.out.println(movie.getMovieTitle()+" "+movie.discription);
+                flagOfSearch=true;
             }
+        }
+
+        if (flagOfSearch==false){
+            System.out.println("Sorry, This movie isn't found!");
         }
     }
 
     // need adjustment
-    protected void AddGenre(String MovieName, Genre genre) {
+  /*  protected void AddGenre(String MovieName, Genre genre) {
         for (Movie movie : MoviesList) {
             if (MovieName.equals(movie.getMovieTitle())) {
                 this.MovieGenre.add(genre);
             }
         }
-    }
+    }*/
 
-    public static ArrayList<Genre> ShowMovieGenre(String MovieName) {
+    public static ArrayList<Movie> ShowMovieGenre(String MovieName) {
+        ArrayList<Movie> g=new ArrayList<>();
         for (Movie movie : MoviesList) {
-            if (MovieName.equals(movie.getMovieTitle())) {
-                return movie.MovieGenre;
+            if (MovieName.equals(movie.genera)) {
+                g.add(movie);
             }
         }
-        return null;
+        return g;
     }
 
     // need adjustments
-    public void AddCast(cast c) {
+ /*   public void AddCast(cast c) {
         MovieCast.add(c);
     }
 
     public void AddDirector(director d) {
         MovieDirector.add(d);
-    }
+    }*/
 
     public static void MovieSearch_bydirector(String directorFname,String directorLname) {
+        boolean flagOfSearch=false;
         for (director director : director.director_list) {
-            if (directorFname.equals(director.F_name) && directorLname.equals(director.L_name)) {
-                System.out.println( "his firstname:"+director.F_name );
-                System.out.println("his lastname:" + director.L_name);
-                System.out.println( " his nationality:"+director.Nationality);
+            if (directorFname.equals(director.getF_name()) && directorLname.equals(director.getL_name())) {
+                System.out.println( "his firstname:"+director.getF_name() );
+                System.out.println("his lastname:" + director.getL_name());
+                System.out.println( " his nationality:"+director.getNationality());
                 System.out.println( "his director Age"+director.Age);
                 for (Movie movie : MoviesList) {
-                    if ((directorFname+" "+directorLname).equals(movie.MovieDirector)) {
-                        System.out.println(movie.getMovieTitle());
+                    if ((directorFname.equals(movie.FnameDirector))&&(directorLname.equals(movie.snameDirector))) {
 
-                    } else {
-                        System.out.println(" this director has no movies");
+                        System.out.println("his movie he/she directed: "+movie.getMovieTitle());
+                        flagOfSearch=true;
+
                     }
+
+                }
+                if (flagOfSearch==false)
+                {
+                    System.out.println(" this director has no movies");
                 }
             }
+
         }
     }
 
 
+    // show no movies many times
     public static void MovieSearch_byActor(String ActorFname,String ActorLname) {
+        boolean flag=false;
         for (cast cast : cast.cast_list) {
-            if (ActorFname.equals(cast.F_name) && ActorLname.equals(cast.L_name)) {
-                System.out.println( "his firstname:"+cast.F_name );
-                System.out.println("his lastname:" + cast.L_name);
-                System.out.println( " his nationality:"+cast.Nationality);
-                System.out.println( "his director Age"+cast.Age);
-                for (Movie movie : MoviesList) {
-                    if ((ActorFname+" "+ActorLname).equals(movie.MovieDirector)) {
-                        System.out.println(movie.getMovieTitle());
 
-                    } else {
-                        System.out.println("  no movies");
+            if (ActorFname.equals(cast.getF_name()) && ActorLname.equals(cast.getL_name())) {
+
+                System.out.println( "his firstname is :"+cast.getF_name() );
+                System.out.println("his lastname is :" + cast.getL_name());
+                System.out.println( " his nationality is :"+cast.getNationality());
+                System.out.println( "his actor Age is "+cast.Age);
+                for (Movie movie : MoviesList) {
+                    if (((ActorFname.equals(movie.F1_cast))&&(ActorLname.equals(movie.s1_cast)))||((ActorFname.equals(movie.f2_cast))&&(ActorLname.equals(movie.c2_cast)))||((ActorFname.equals(movie.f3_cast))&&(ActorLname.equals(movie.c3_cast)))){
+                        System.out.println("his movie he/she work in  : "+movie.getMovieTitle());
+                        flag=true;
                     }
+
+                }
+                if(flag==false)
+                {
+                    System.out.println("  no movies");
                 }
             }
+
         }
     }
-    public ArrayList<cast> SearchCastByName(String name) {
+   /* public ArrayList<cast> SearchCastByName(String name) {
         ArrayList<cast> result = new ArrayList<cast>();
         for (cast castData : MovieCast) {
-            if (name.equals(castData.F_name)) {
+            if (name.equals(castData.getF_name())) {
                 result.add(castData);
             }
         }
@@ -277,13 +331,13 @@ public class Movie implements ReadFiles {
    public ArrayList<director> SearchDirectorByName(String name) {
         ArrayList<director> result = new ArrayList<director>();
         for (director DirectorData : MovieDirector) {
-            if (name.equals(DirectorData.F_name)) {
+            if (name.equals(DirectorData.getF_name())) {
                 result.add(DirectorData);
             }
         }
         return result;
 
-    }
+    }*/
 
     public static ArrayList<Movie> UpCommingMovies(){
         ArrayList<Movie> UpCommingMovie = new ArrayList<>();
@@ -296,8 +350,9 @@ public class Movie implements ReadFiles {
     }
 
     public static List<Movie> TopMovies(){
-        Collections.sort(MoviesList, Comparator.comparingDouble(Movie::getIMDB_Score).reversed());
-        List<Movie> top10Movies = MoviesList.subList(0, Math.min(MoviesList.size(), 10));
+        List<Movie>sorted=MoviesList;
+        Collections.sort(sorted, Comparator.comparingDouble(Movie::getIMDB_Score).reversed());
+        List<Movie> top10Movies = sorted.subList(0, Math.min(sorted.size(), 10));
         return top10Movies;
     }
 
@@ -329,11 +384,20 @@ public class Movie implements ReadFiles {
 
        // int movieId, String movieTitle, Date movieDate, int movieTime,String F_cast,String s_cast,String L_cast,String genera,String FnameDirector, String movieLanguage, int IMDB_Score ,String  movieCountry, String movieBudget, String movieRevenue,double UserRating,String Discription)
         //public Movie(int movieId, String movieTitle, Date movieDate, int movieTime,String F1_cast,String s1_cast,String f2_cast,String c2_cast,String f3_cast,String c3_cast,String genera,String FnameDirector,String snameDirector,  String movieLanguage, int IMDB_Score ,String  movieCountry, String movieBudget, String movieRevenue,double UserRating,String Discription)
-        return MovieId+","+getMovieTitle()+","+MovieDate+","+MovieTime+","+F1_cast+","+s1_cast+","+f2_cast+","+ c2_cast+","+f3_cast+","+ c3_cast+"," +genera+","+FnameDirector+","+snameDirector+","+MovieLanguage+","+IMDB_Score+","+MovieCountry+","+MovieBudget+","+MovieRevenue+","+UserRating+","+discription;
+        return MovieId+","+MovieTitle+","+MovieDate+","+MovieTime+","+F1_cast+","+s1_cast+","+f2_cast+","+ c2_cast+","+f3_cast+","+ c3_cast+"," +genera+","+FnameDirector+","+snameDirector+","+MovieLanguage+","+IMDB_Score+","+MovieCountry+","+MovieBudget+","+MovieRevenue+","+UserRating+","+discription;
     }
     public static void DisplayAllMovies(){
         for (Movie movie:MoviesList) {
+
+            System.out.println(movie.MovieId+" : "+movie.getMovieTitle());
+        }
+    }
+
+    public static void DisplayAllMoviesInfo(){
+        for (Movie movie:MoviesList) {
+
             System.out.println(movie.displaymovie());
         }
     }
+
 }

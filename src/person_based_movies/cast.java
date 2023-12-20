@@ -17,7 +17,7 @@ public class cast extends movie_person implements ReadFiles {
   public static ArrayList<cast> cast_list = new ArrayList<cast>();
 
 
-    cast(int age, String Gender, String nationality, String f_name, String l_name) {
+    public cast(int age, String Gender, String nationality, String f_name, String l_name) {
         super(age, Gender, nationality, f_name, l_name);
 
     }
@@ -61,7 +61,7 @@ public class cast extends movie_person implements ReadFiles {
 
 
     public void setCast_name(String  name) {
-        this.F_name =name;
+        this.F_name=name;
     }
 
     public void setCast_Lastname(String lastname) {
@@ -70,7 +70,7 @@ public class cast extends movie_person implements ReadFiles {
 
     public String displaycast(){
         //int age, String Gender, String nationality, String f_name, String l_name
-        return Age+","+Gender+","+Nationality+","+F_name+","+L_name;
+        return Age+","+Gender+","+getNationality()+","+getF_name()+","+getL_name();
 
 
     }

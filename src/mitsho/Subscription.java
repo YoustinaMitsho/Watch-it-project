@@ -12,9 +12,9 @@ public class Subscription {
     //protected LocalDate EndDate = StartDate.plusDays(30);
 
     protected boolean is_paied;
-    public static int PlanACounter = 0;
-    public static int PlanBCounter = 0;
-    public static int PlanCCounter = 0;
+    public static int PlanACounter = 0;//basic
+    public static int PlanBCounter = 0;//standerd
+    public static int PlanCCounter = 0;//premium
     public int Movienum;
 
 
@@ -45,6 +45,9 @@ public class Subscription {
     }*/
 
     //revenue
+    //chose plan
+
+    //take this in user
     public void chooseplan(String plantype) {
         System.out.println("choose your plan");
         Scanner input = new Scanner(System.in);
@@ -62,7 +65,8 @@ public class Subscription {
 
     //most subscriped plan done
 
-    public int CalcRevenu() {
+    public static int CalcRevenu() {
+        //down casting
         Subscription s = new Basic();
         Basic a = (Basic) s;
 
@@ -70,9 +74,35 @@ public class Subscription {
         Standard w = (Standard) hh;
 
         Subscription gg = new Premium();
-        Premium l = (Premium) s;
+        Premium l = (Premium) gg;
 
-        int res = a.CalculatePriceOf1() + w.CalculatePriceOf2() + l.CalculatePriceOf3();
+        int res = a.CalculatePriceOf3() + w.CalculatePriceOf3() + l.CalculatePriceOf3();
+        return res;
+    }
+
+     int CalculatePriceOf3(){
+        return 0;
+     };
+
+    public static int ReturnRevenu(String subscrebtion_type ) {
+
+        int  res=0;
+        if (subscrebtion_type.equals("Basic")) {
+            Basic a = new Basic();
+            res= a.Price;
+
+
+        } else if (subscrebtion_type.equals("Standard")) {
+            Standard s = new Standard();
+            res= s.Price;
+
+        } else if (subscrebtion_type.equals("Premium")) {
+
+            Premium p = new Premium();
+            res= p.Price;
+        }
+
+
         return res;
     }
 }

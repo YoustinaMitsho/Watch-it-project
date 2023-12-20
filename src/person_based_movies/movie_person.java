@@ -1,11 +1,18 @@
 package person_based_movies;
+import mitsho.Watched;
 
+import java.util.ArrayList;
 public abstract class movie_person {
     public int Age ;
     public String Gender;
-    public String Nationality;
-    public String F_name;
-    public String L_name;
+    private String Nationality;
+     String F_name;
+
+    public String getNationality() {
+        return Nationality;
+    }
+
+    String L_name;
 
 movie_person(int age, String Gender, String nationality, String f_name, String l_name){
     this.Age=age;
@@ -24,3 +31,5 @@ movie_person(int age, String Gender, String nationality, String f_name, String l
     }
 
 }
+
+
