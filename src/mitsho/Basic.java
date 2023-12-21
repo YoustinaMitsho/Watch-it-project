@@ -10,7 +10,7 @@ public class Basic extends Subscription{
         return Subscription.PlanACounter;
     }*/
 
-    /***
+     /***
      * override from Subscription class
      * function that calculate the revenue of specific plan(basic)
      * @return total revenue of specific plan(basic)

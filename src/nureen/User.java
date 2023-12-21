@@ -272,7 +272,7 @@ public class User extends personx implements ReadFiles {
      * @param Path the path to the file
      * @param witeuser the array of all users that contain all data and all changes
      */
-     public static void WriteFile(String Path,ArrayList<User> witeuser) {
+public static void WriteFile(String Path,ArrayList<User> witeuser) {
         try {
             if (Path.equals("hager.txt")) {
                 String filePath = "hager.txt";

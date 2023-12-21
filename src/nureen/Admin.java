@@ -18,8 +18,8 @@ public class Admin extends personx {
     /***
      * upcasting from sup class to suber class
      */
-    private static personx admin2=  new Admin();
-    //private static Admin admin;
+    //private static personx admin2=  new Admin();
+    private static Admin admin;
     Subscription sub = new Subscription();
 
     //ArrayList<Movie> movies = new ArrayList<Movie>();
@@ -42,14 +42,15 @@ public class Admin extends personx {
      * @return one instant from admin
      */
     public static Admin getInstance() {
-        if (admin2 == null) {
+        if (admin == null) {
             // If no instance exists, create one
-            admin2 = new Admin(5,"admin",12341234,"admin","admin","admin@admin.com");
+            admin = new Admin(5,"admin",12341234,"admin","admin","admin@admin.com");
         }
-        return (Admin) admin2;
+        return (Admin) admin;
     }
+
     public static void DisplayAdminData(){
-        System.out.println(admin2.id+","+admin2.getUsername()+","+admin2.getEmail());
+        System.out.println(admin.id+","+admin.getUsername()+","+admin.getEmail());
     }
    /* public void add_movie(Movie addmovie) {
         MoviesList.add(addmovie);
@@ -202,9 +203,11 @@ public class Admin extends personx {
        System.out.print("Revenue of the movie: ");
        String revenue = dataofmovie.next();
        System.out.print("Movie description:");
+       //m4
        String description = dataofmovie.nextLine();
        Movie MOV = (Movie) mov.get(mov.size() - 1);
        int idnewmovie = mov.getLast().getMovieId() + 1;
+       dataofmovie.close();
        int id=mov.size()+1;
        int rate=0;
        mov.add(new Movie(id, movie_name, movie_year, movie_dur, actor1_fn, actor1_ln, actor2_fn, actor2_ln, actor3_fn, actor3_ln, movie_genre, director_fn, director_ln, movie_lang, imdb, country, budget, revenue, rate, description));

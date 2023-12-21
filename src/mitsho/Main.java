@@ -6,10 +6,7 @@ import nureen.User;
 import java.io.IOException;
 import java.security.spec.RSAOtherPrimeInfo;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.SortedMap;
+import java.util.*;
 
 public class Main {
     /**
@@ -35,7 +32,7 @@ public class Main {
      * @param Director the array list of all directors pf movies we have
      * @param Cast the array list of all actors in all movies we have
      */
-    public static void closeprogram(ArrayList<User> user, ArrayList<Movie> movie, ArrayList<director> Director, ArrayList<cast> Cast){
+public static void closeprogram(ArrayList<User> user, ArrayList<Movie> movie, ArrayList<director> Director, ArrayList<cast> Cast){
         Movie.WriteFile("OOP_Movies.txt",movie);
         User.WriteFile("hager.txt",user);
         director.WriteFile("director.txt",Director);
@@ -73,26 +70,27 @@ public static void  register(ArrayList<User> user, ArrayList<Movie> movies,Admin
         System.out.println("enter your username:");
         String username = inputuser.next();//username
         int password;
-        while (true) {
+    while (true) {
+        try {
             System.out.println("Enter integer password");
-            if (inputuser.hasNextInt())
-            {
-                password = inputuser.nextInt();
+            password = inputuser.nextInt();
 
-                // Convert the integer to a string to get its length
-                String inputString = Integer.toString(password);
+            // Convert the integer to a string to get its length
+            String inputString = Integer.toString(password);
 
-                // Check if the length is between 8 and 16 (inclusive)
-                if (inputString.length() >= 8 && inputString.length() <= 16) {
-                    break;
-                } else {
-                    System.out.println("Invalid input length. It should be between 8 and 16.");
-                }
+            // Check if the length is between 8 and 16 (inclusive)
+            if (inputString.length() >= 8 && inputString.length() <= 16) {
+                break;
+            } else {
+                System.out.println("Invalid input length. It should be between 8 and 16.");
             }
-            else {
-                System.out.println("Invalid input. Please enter an integer.");
-            }
+        } catch (InputMismatchException e) {
+            // Consume the invalid input to avoid an infinite loop
+            inputuser.next();
+            System.out.println("Invalid input. Please enter an integer.");
         }
+    }
+
         String firstname;
         while (true) {
             System.out.println("enter your first name:");
@@ -259,7 +257,6 @@ public static  void login (ArrayList<User> user, ArrayList<Movie> movies,Admin a
             DisplayUserDiscoverPg(userLogIn, movies, user,admin,di,ca);
         }
     }
-
 /*private static void menu_admin(ArrayList<Movie> movies,Admin admin) {
             System.out.println("welcome admin to watch it :) ");
             System.out.println("--------------------------------------------------------------------------");
@@ -333,7 +330,6 @@ public static  void login (ArrayList<User> user, ArrayList<Movie> movies,Admin a
                 menu_admin(movies,admin);
             }
         }*/
-
     /***
      *log in admin
      * @param movies the array list of all movies we have
@@ -864,7 +860,6 @@ static void Search(ArrayList<Movie> movies, User user, ArrayList<User> users,Adm
             ShowMovie(movie, user, movies, users,admin,di,d,ca,c);
         }
     }*/
-
     /**
      * take name of movie from user
      */
