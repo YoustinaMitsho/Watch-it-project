@@ -11,7 +11,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.SplittableRandom;
 
-public class User extends personx implements ReadFiles {
+public class User extends personx implements ReadFiles{
     int age; //3shan offer films related
 
    String subscrebtion_type;
@@ -149,12 +149,10 @@ public class User extends personx implements ReadFiles {
      * @return array list of users that contain the data
      * @throws IOException
      */
-    public static ArrayList<User> Read(String Path) throws IOException {
+    public static ArrayList Read(String Path) throws IOException {
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         // Create a FileReader object to read the file
         FileReader fileReader = new FileReader(Path);
-
-
         try {
             // Wrap the FileReader with BufferedReader for efficient reading
             BufferedReader bufferedReader = new BufferedReader(fileReader);

@@ -67,7 +67,7 @@ public class Subscription {
     //most subscriped plan done
 
     public static int CalcRevenu() {
-        //down casting
+        //down casting and upcasting
         Subscription s = new Basic();
         Basic a = (Basic) s;
 

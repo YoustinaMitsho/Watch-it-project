@@ -3,6 +3,8 @@ import com.sun.jdi.VMCannotBeModifiedException;
 import nureen.*;
 import person_based_movies.*;
 import nureen.User;
+
+import java.io.CharArrayReader;
 import java.io.IOException;
 import java.security.spec.RSAOtherPrimeInfo;
 import java.sql.SQLOutput;
@@ -19,7 +21,7 @@ public class Main {
         ArrayList<Movie> movie = Movie.Read("OOP_Movies.txt");
         ArrayList<User> user = User.Read("oop_prpject_user_data.txt");
         ArrayList<director> Director = director.Read("director.txt");
-        ArrayList<cast> Cast = cast.Read("cast.txt");
+        ArrayList<cast>Cast = cast.Read("cast.txt");
         Admin admin = Admin.getInstance();
        welcome(user, movie,admin,Director,Cast);
         //DisplayUserDiscoverPg(user , movie);
@@ -366,7 +368,6 @@ public static  void login_admin (ArrayList<Movie>movies,Admin admin,ArrayList<Us
         }
     }
     // welcome msg:
-
     /***
      * the admin page and show its functionality
      * @param movies the array list of all movies we have
@@ -475,7 +476,6 @@ static void AdminProfile(ArrayList<User> user,ArrayList<Movie> movies,Admin admi
             }while(flag == false);*/
     }
     //Discover page:
-
     /***
      * the user page and its functionality
      * @param user an instant of users class
@@ -485,7 +485,6 @@ static void AdminProfile(ArrayList<User> user,ArrayList<Movie> movies,Admin admi
      * @param di the array list of all directors pf movies we have
      * @param ca the array list of all actors in all movies we have
      */
-
 static void DisplayUserDiscoverPg(User user, ArrayList<Movie> movies, ArrayList<User> users,Admin admin,ArrayList<director>di,ArrayList<cast>ca){
         System.out.println("--------------------------------------------------------------------------");
         System.out.println("Discover Page:");
@@ -956,7 +955,6 @@ Scanner scan=new Scanner(System.in);
     }
 
 }
-
     /***
      * function add rate to specific movie
      * @param movies the array list of all movies

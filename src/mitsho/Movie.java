@@ -138,7 +138,7 @@ public class Movie implements ReadFiles {
      * @return array list of movies that contain all data
      * @throws IOException
      */
-    public static ArrayList<Movie> Read(String Path) throws IOException
+    public static ArrayList Read(String Path) throws IOException
     {
 
         // Create a FileReader object to read the file

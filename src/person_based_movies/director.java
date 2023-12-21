@@ -12,7 +12,7 @@ import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class director extends movie_person {
+public class director extends movie_person implements ReadFiles {
 
     public static ArrayList<director> director_list = new ArrayList<director>();
 
@@ -26,8 +26,39 @@ public class director extends movie_person {
      * @return array list of directors that contain all data
      * @throws IOException
      */
-    public static ArrayList<director> Read(String Path) throws IOException {
+ /*   public static ArrayList<director> Read(String Path) throws IOException {
        // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // Create a FileReader object to read the file
+        FileReader fileReader = new FileReader(Path);
+
+
+        try {
+            // Wrap the FileReader with BufferedReader for efficient reading
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            // Read each line from the file
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                //System.out.println(line);
+                String[] values = line.split(",");
+                // Process each valuezz
+                //System.out.println(value + " ");
+                //int age, String Gender, String nationality, String f_name, String l_name
+                director_list.add(new director(Integer.parseInt(values[0]), values[1], values[2], values[3], values[4]));
+                //return obj;
+            }
+        } catch (IOException e) {
+            System.out.println("file not found");
+            // Handle any potential IO exceptions (e.g., file not found)
+            e.printStackTrace();
+        } finally {
+            fileReader.close();
+        }
+        return director_list;
+    }*/
+
+    public static ArrayList Read(String Path) throws IOException {
+        // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         // Create a FileReader object to read the file
         FileReader fileReader = new FileReader(Path);
 
