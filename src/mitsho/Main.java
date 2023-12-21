@@ -12,20 +12,44 @@ import java.util.Scanner;
 import java.util.SortedMap;
 
 public class Main {
+    /**
+     *the main function which read all files in it and start our program
+     * @param args array of string tha can take value before program work
+     * @throws IOException
+     */
     public static void main(String args[]) throws IOException {
-
 
         ArrayList<Movie> movie = Movie.Read("OOP_Movies.txt");
         ArrayList<User> user = User.Read("oop_prpject_user_data.txt");
-
-        ArrayList<director> Director = director.Read("movie_persion_di.txt");
-        ArrayList<cast> Cast = cast.Read("movie_persion_ca.txt");
+        ArrayList<director> Director = director.Read("director.txt");
+        ArrayList<cast> Cast = cast.Read("cast.txt");
         Admin admin = Admin.getInstance();
        welcome(user, movie,admin,Director,Cast);
         //DisplayUserDiscoverPg(user , movie);
         //UserProfile();
-
     }
+    /***
+     * closed program and save all changes
+     * @param user the array list of all users we have
+     * @param movie the array list of all movies we have
+     * @param Director the array list of all directors pf movies we have
+     * @param Cast the array list of all actors in all movies we have
+     */
+    public static void closeprogram(ArrayList<User> user, ArrayList<Movie> movie, ArrayList<director> Director, ArrayList<cast> Cast){
+        Movie.WriteFile("OOP_Movies.txt",movie);
+        User.WriteFile("hager.txt",user);
+        director.WriteFile("director.txt",Director);
+        cast.WriteFile("cast.txt",Cast);
+        System.out.println("closed program done");
+    }
+    /***
+     * register the user to the program
+     * @param user the array list of all users we have
+     * @param movies the array list of all movies we have
+     * @param admin one admin we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 public static void  register(ArrayList<User> user, ArrayList<Movie> movies,Admin admin,ArrayList<director>di,ArrayList<cast>ca) {
         Scanner inputuser = new Scanner(System.in);
         String email;
@@ -144,12 +168,20 @@ public static void  register(ArrayList<User> user, ArrayList<Movie> movies,Admin
         user.add(new User(idnew, username, password, firstname, lastname, email, age, nationality, subscription.toLowerCase(),month));
         login(user, movies,admin,di,ca);
     }
+    /***
+     *display to the user to choose register or login
+     * @param user the array list of all users we have
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 public static void menu (ArrayList<User> user, ArrayList<Movie> movies,Admin admin,ArrayList<director>di,ArrayList<cast>ca){
         Scanner inputuser= new Scanner(System.in);
         int choice_enterapp;
         //boolen flag=true;
         while(true){
-            System.out.println("enter 1 for registration \n"+ "enter 2 for login" );
+            System.out.println("enter 1 for registration \n"+ "enter 2 for login \n enter 3 for close the program " );
             choice_enterapp=inputuser.nextInt();
             if (choice_enterapp == 1)
             {
@@ -167,9 +199,13 @@ public static void menu (ArrayList<User> user, ArrayList<Movie> movies,Admin adm
                 login (user, movies,admin,di,ca);
                 break;
             }
-                else {
+           else {
                     System.out.println("invalid input");
                 }
+            }
+            else if (choice_enterapp==3) {
+                closeprogram(user,movies,di,ca);
+              break;
             }
             else {
                 System.out.println("INVALID CHOICE ");
@@ -177,6 +213,14 @@ public static void menu (ArrayList<User> user, ArrayList<Movie> movies,Admin adm
             }
         }
     }
+    /***
+     *log in the user to the program and check if user register first or not
+     * @param user the array list of all users we have
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 public static  void login (ArrayList<User> user, ArrayList<Movie> movies,Admin admin,ArrayList<director>di,ArrayList<cast>ca) {
         System.out.println("-----------");
         System.out.println("Welcome to Login:");
@@ -215,7 +259,9 @@ public static  void login (ArrayList<User> user, ArrayList<Movie> movies,Admin a
             DisplayUserDiscoverPg(userLogIn, movies, user,admin,di,ca);
         }
     }
-private static void menu_admin(ArrayList<Movie> movies,Admin admin) {
+
+/*private static void menu_admin(ArrayList<Movie> movies,Admin admin) {
+            System.out.println("welcome admin to watch it :) ");
             System.out.println("--------------------------------------------------------------------------");
             System.out.println("Discover Page:");
             System.out.println("1. display your data");
@@ -278,7 +324,7 @@ private static void menu_admin(ArrayList<Movie> movies,Admin admin) {
             /*else if (input==8) {
                 admin.DisplayRevenu();
                 menu_admin(movies, admin);
-            }*/
+
             else if (input==8) {
                 //menu(use,movies)
 
@@ -286,7 +332,16 @@ private static void menu_admin(ArrayList<Movie> movies,Admin admin) {
                 System.out.println("invalid choice!" );
                 menu_admin(movies,admin);
             }
-        }
+        }*/
+
+    /***
+     *log in admin
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param user the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 public static  void login_admin (ArrayList<Movie>movies,Admin admin,ArrayList<User> user,ArrayList<director>di,ArrayList<cast>ca) {
         System.out.println("-----------");
         System.out.println("Welcome to Login:");
@@ -315,6 +370,15 @@ public static  void login_admin (ArrayList<Movie>movies,Admin admin,ArrayList<Us
         }
     }
     // welcome msg:
+
+    /***
+     * the admin page and show its functionality
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param user the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 static void AdminProfile(ArrayList<User> user,ArrayList<Movie> movies,Admin admin,ArrayList<director>di,ArrayList<cast>ca) {
         Scanner inputAdmin = new Scanner(System.in);
         System.out.println("1-edit move info \n2-display the most subscribed plan\n3-display all movie data\n4-display month had the most revenue\n5-back");
@@ -373,6 +437,15 @@ static void AdminProfile(ArrayList<User> user,ArrayList<Movie> movies,Admin admi
         AdminProfile( user, movies, admin,di,ca);
 
     }
+
+    /***
+     *the welcome page tp witch it
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param user the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
  static void welcome(ArrayList<User> user, ArrayList<Movie> movies,Admin admin,ArrayList<director>di,ArrayList<cast>ca){
         System.out.println("Welcome to Watch It, where your movie experience is personalized just for you!\n" +
                 "Create your Watchlist to never miss a movie you want to see and easily access\n" +
@@ -406,6 +479,17 @@ static void AdminProfile(ArrayList<User> user,ArrayList<Movie> movies,Admin admi
             }while(flag == false);*/
     }
     //Discover page:
+
+    /***
+     * the user page and its functionality
+     * @param user an instant of users class
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param users the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
+
 static void DisplayUserDiscoverPg(User user, ArrayList<Movie> movies, ArrayList<User> users,Admin admin,ArrayList<director>di,ArrayList<cast>ca){
         System.out.println("--------------------------------------------------------------------------");
         System.out.println("Discover Page:");
@@ -519,6 +603,15 @@ static void DisplayUserDiscoverPg(User user, ArrayList<Movie> movies, ArrayList<
 
     }
     //User profile:
+    /***
+     * the user profile, its information, lists of movies and edit  this information
+     * @param user an instant of users class
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param users the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 static void UserProfile(ArrayList<Movie> movies, User user, ArrayList<User>users,Admin admin,ArrayList<director>di,ArrayList<cast>ca){
         System.out.println("--------------------------------------------------------------------------");
         System.out.println("User profile:");
@@ -656,6 +749,7 @@ static void UserProfile(ArrayList<Movie> movies, User user, ArrayList<User>users
 
             }
             else if (choofinfo==2){
+            changeemail(user,users,movies,admin,di,ca);
                 UserProfile(movies, user, users,admin,di,ca);
 
                 }
@@ -686,7 +780,7 @@ static void UserProfile(ArrayList<Movie> movies, User user, ArrayList<User>users
 
         }
         else if (btn == 5) {
-            UserProfile(movies, user, users,admin,di,ca);
+            DisplayUserDiscoverPg(user,movies, users,admin,di,ca);
 
         } else {
             System.out.println("Invalid Input, Try again!");
@@ -694,6 +788,15 @@ static void UserProfile(ArrayList<Movie> movies, User user, ArrayList<User>users
         }
     }
     // Search:
+    /***
+     * the search page that can search by name of movie, actor,director or genera
+     * @param user an instant of users class
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param users the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 static void Search(ArrayList<Movie> movies, User user, ArrayList<User> users,Admin admin,ArrayList<director>di,ArrayList<cast>ca) {
         System.out.println("--------------------------------------------------------------------------");
         System.out.println("Search Page:");
@@ -761,6 +864,10 @@ static void Search(ArrayList<Movie> movies, User user, ArrayList<User> users,Adm
             ShowMovie(movie, user, movies, users,admin,di,d,ca,c);
         }
     }*/
+
+    /**
+     * take name of movie from user
+     */
 static void MovieSearch(){
         String name;
         Scanner scan = new Scanner(System.in);
@@ -768,6 +875,15 @@ static void MovieSearch(){
         name = scan.nextLine();
         Movie.MovieSearch(name);
     }
+    /***
+     * display page which can display all movies,top ratede or upcoming movies
+     * @param user an instant of users class
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param users the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 static void displayMovies(User user, ArrayList<Movie> movies, ArrayList<User> users,Admin admin,ArrayList<director>di,ArrayList<cast>ca){
         Scanner sc= new Scanner(System.in);
         System.out.println("1.ALL MOVIES");
@@ -808,6 +924,15 @@ static void displayMovies(User user, ArrayList<Movie> movies, ArrayList<User> us
             DisplayUserDiscoverPg(user, movies, users,admin,di,ca);
         }
     }
+    /***
+     * ro change email of the users and check if it is valid or not
+     * @param user an instant of users class
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param users the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 static void changeemail(User user,ArrayList<User>users,ArrayList<Movie>movies,Admin admin,ArrayList<director>di,ArrayList<cast>ca){
 Scanner scan=new Scanner(System.in);
     System.out.println("enter new email");
@@ -836,6 +961,13 @@ Scanner scan=new Scanner(System.in);
     }
 
 }
+
+    /***
+     * function add rate to specific movie
+     * @param movies the array list of all movies
+     * @param id id of the movie that will be rateded
+     * @param rate rate that the user will give to specific movie
+     */
 public static void addtare(ArrayList<Movie>movies,int id,int rate){
     for (Movie m:movies) {
         if (m.getMovieId()==id){
@@ -846,6 +978,14 @@ public static void addtare(ArrayList<Movie>movies,int id,int rate){
 
 
 }
+    /***
+     * the admin function that can add movies with actors and director of the movie or delete movie
+     * @param movies the array list of all movies we have
+     * @param admin the only admin we have
+     * @param user the array list of all users we have
+     * @param di the array list of all directors pf movies we have
+     * @param ca the array list of all actors in all movies we have
+     */
 static void EditedMovie(ArrayList<User> user,ArrayList<Movie> movies,Admin admin,ArrayList<director>di,ArrayList<cast>ca){
         Scanner inputAdmin = new Scanner(System.in);
         //  DisplayMovieSToAdmin();

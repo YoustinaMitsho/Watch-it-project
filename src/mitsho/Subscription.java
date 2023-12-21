@@ -7,6 +7,7 @@ public class Subscription {
 
 
     protected int UserId;
+
     //private int PlanPrice;
    // protected LocalDate StartDate;
     //protected LocalDate EndDate = StartDate.plusDays(30);

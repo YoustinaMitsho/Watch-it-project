@@ -22,16 +22,13 @@ import java.util.List;
 public class Movie implements ReadFiles {
     static ArrayList<Movie> MoviesList = new ArrayList<Movie>();
 
-    public static ArrayList<Movie> getMoviesList() {
-        return MoviesList;
-    }
 
     private int MovieId;
     private String MovieTitle;
      int MovieDate;
      int MovieTime;
     ArrayList<cast> MovieCast = new ArrayList<cast>();   // Cast class to be done later
-    ArrayList<Genre> MovieGenre = new ArrayList<Genre>(); // Genre class to be done later
+    //ArrayList<Genre> MovieGenre = new ArrayList<Genre>(); // Genre class to be done later
     ArrayList<director> MovieDirector = new ArrayList<director>();  // Director class to be done later
      String MovieLanguage; // Is it a class like director?
      int IMDB_Score;
@@ -54,6 +51,8 @@ public class Movie implements ReadFiles {
     String c3_cast;
     String snameDirector;
     String FnameDirector;
+
+
     public Movie(int movieId, String movieTitle, int movieDate, int movieTime, String F1_cast, String s1_cast, String f2_cast, String c2_cast, String f3_cast, String c3_cast, String genera, String FnameDirector, String snameDirector, String movieLanguage, int IMDB_Score , String  movieCountry, String movieBudget, String movieRevenue, int UserRating, String Discription) {
         MovieId = movieId;
         this.MovieTitle = movieTitle;
@@ -131,7 +130,14 @@ public class Movie implements ReadFiles {
         this.UserRating=userRating;
         this.discription=discription;
     }
+    public Movie(){}
 
+    /**
+     * read file of movies
+     * @param Path the path of the file
+     * @return array list of movies that contain all data
+     * @throws IOException
+     */
     public static ArrayList<Movie> Read(String Path) throws IOException
     {
 
@@ -177,6 +183,7 @@ public class Movie implements ReadFiles {
         //return super.;
     }*/
 
+
     public int getMovieTime() {
         return MovieTime;
     }
@@ -195,10 +202,21 @@ public class Movie implements ReadFiles {
         return UserRating;
     }
 
+public String getMovieTitle()
+    {
+        return MovieTitle;
+    }
 
-
-public Movie(){}
-
+public int getIMDB_Score() {
+        return IMDB_Score;
+    }
+    /**
+     *
+     * @return array of list that contain the data
+     */
+    public static ArrayList<Movie> getMoviesList() {
+        return MoviesList;
+    }
     //in fav
     public Movie(boolean Is_it, String which){
         if(which.equals("fav")){
@@ -210,20 +228,14 @@ public Movie(){}
             this.is_WatchLater = Is_it;
         }
     }
-
-    public String getMovieTitle()
-    {
-        return MovieTitle;
-    }
-
-    public int getIMDB_Score() {
-        return IMDB_Score;
-    }
-
     //public boolean isIs_watched() {
         //return is_watched;
     //}
 
+    /***
+     * search by movie name in the array of all movies
+     * @param MovieName the name of the movie that we search about
+     */
     public static void MovieSearch(String MovieName) {
         boolean flagOfSearch=false;
         for (Movie movie : MoviesList) {
@@ -247,6 +259,11 @@ public Movie(){}
         }
     }*/
 
+    /***
+     * search by genera
+     * @param MovieName the genera of the movie
+     * @return array list contain movies with specific genera
+     */
     public static ArrayList<Movie> ShowMovieGenre(String MovieName) {
         ArrayList<Movie> g=new ArrayList<>();
         for (Movie movie : MoviesList) {
@@ -266,6 +283,11 @@ public Movie(){}
         MovieDirector.add(d);
     }*/
 
+    /**
+     * search by director name  and display its information
+     * @param directorFname director first name that we look for
+     * @param directorLname director last name that we look for
+     */
     public static void MovieSearch_bydirector(String directorFname,String directorLname) {
         boolean flagOfSearch=false;
         for (director director : director.director_list) {
@@ -292,7 +314,11 @@ public Movie(){}
         }
     }
 
-
+    /***
+     * search by actor name and display its information
+     * @param ActorFname actor first name that we look for
+     * @param ActorLname  actor last name that we look for
+     */
     // show no movies many times
     public static void MovieSearch_byActor(String ActorFname,String ActorLname) {
         boolean flag=false;
@@ -339,6 +365,10 @@ public Movie(){}
 
     }*/
 
+    /***
+     * look for the upcoming movies and save them in array
+     * @return array that contain the upcoming movies
+     */
     public static ArrayList<Movie> UpCommingMovies(){
         ArrayList<Movie> UpCommingMovie = new ArrayList<>();
         for (Movie m: MoviesList) {
@@ -348,7 +378,10 @@ public Movie(){}
         }
         return UpCommingMovie;
     }
-
+    /***
+     * look for the top 10 movies by IMDB_score and save them in array
+     * @return array that contain the top 10 movies
+     */
     public static List<Movie> TopMovies(){
         List<Movie>sorted=MoviesList;
         Collections.sort(sorted, Comparator.comparingDouble(Movie::getIMDB_Score).reversed());
@@ -357,11 +390,15 @@ public Movie(){}
     }
 
 
-
+    /**
+     * write in the file all the updates thah changed
+     * @param Path the path to the file
+     * @param Movieswite array list of all movies that contaii all data
+     */
     public static void WriteFile(String Path,ArrayList<Movie> Movieswite) {
         try {
-            if (Path.equals("hager.txt")) {
-                String filePath = "hager.txt";
+            if (Path.equals("OOP_Movies.txt")) {
+                String filePath = "OOP_Movies.txt";
 
                 Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 
@@ -371,8 +408,9 @@ public Movie(){}
                 for (Movie m : Movieswite) {
                     String userData = m.displaymovie();
                     Files.write(Paths.get(filePath), (userData + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
-                    System.out.println("Data appended to the file successfully.");
+
                 }
+                System.out.println("Data appended to the file successfully.");
             }
 
         } catch (IOException e) {
@@ -380,12 +418,19 @@ public Movie(){}
         }
     }
 
+    /**
+     * @return all data of all movies
+     */
     public String displaymovie(){
 
        // int movieId, String movieTitle, Date movieDate, int movieTime,String F_cast,String s_cast,String L_cast,String genera,String FnameDirector, String movieLanguage, int IMDB_Score ,String  movieCountry, String movieBudget, String movieRevenue,double UserRating,String Discription)
         //public Movie(int movieId, String movieTitle, Date movieDate, int movieTime,String F1_cast,String s1_cast,String f2_cast,String c2_cast,String f3_cast,String c3_cast,String genera,String FnameDirector,String snameDirector,  String movieLanguage, int IMDB_Score ,String  movieCountry, String movieBudget, String movieRevenue,double UserRating,String Discription)
         return MovieId+","+MovieTitle+","+MovieDate+","+MovieTime+","+F1_cast+","+s1_cast+","+f2_cast+","+ c2_cast+","+f3_cast+","+ c3_cast+"," +genera+","+FnameDirector+","+snameDirector+","+MovieLanguage+","+IMDB_Score+","+MovieCountry+","+MovieBudget+","+MovieRevenue+","+UserRating+","+discription;
     }
+
+    /***
+     * display id and movie title for all movies
+     */
     public static void DisplayAllMovies(){
         for (Movie movie:MoviesList) {
 
@@ -393,6 +438,9 @@ public Movie(){}
         }
     }
 
+    /**
+     *  call the non static function (displaymovie) and display it
+     */
     public static void DisplayAllMoviesInfo(){
         for (Movie movie:MoviesList) {
 

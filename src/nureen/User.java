@@ -1,8 +1,6 @@
 package nureen;
 import mitsho.*;
 import person_based_movies.ReadFiles;
-import person_based_movies.cast;
-import person_based_movies.director;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.SplittableRandom;
 
 public class User extends personx implements ReadFiles {
     int age; //3shan offer films related
@@ -29,25 +28,14 @@ public class User extends personx implements ReadFiles {
 
    ArrayList<Movie> MoviesList = Movie.getMoviesList();
     //ArrayList<cast> MovieCast = new ArrayList<>();
-
-
-
    // ArrayList<director> MovieDirector = new ArrayList<>();
-     int BNoOfMovies=1;//basic 5 movies
-     int SNoOfMovies=1;//standerd 10 movies
-
-     int PNoOfMovies=1;//premium 30 movies
+     int BNoOfMovies=0;//basic 5 movies
+     int SNoOfMovies=0;//standerd 10 movies
+     int PNoOfMovies=0;//premium 30 movies
      private int mounth;
-
-    public int getMounth() {
-        return mounth;
-    }
-
     public User() {
         super();
-
     }
-
     public User(int id, String username, int pass, String Fname, String Lname, String email, int age, String nationality, String subscrebtiontype, int mounth){
         super( id, username,  pass,  Fname,  Lname,  email);
         this.age=age;
@@ -87,9 +75,9 @@ public class User extends personx implements ReadFiles {
             Premium.PlanCCounter++;
 
         }
-        /*this.IDforFAV=fav;
+        this.IDforFAV=fav;
         this.IDforLAter=Later;
-        this.IDforalreadyWatched=WAtcheedaleardy;*/
+        this.IDforalreadyWatched=WAtcheedaleardy;
 
 
                 for (Integer inte:Later) {
@@ -125,24 +113,22 @@ public class User extends personx implements ReadFiles {
        // this.FavouriteMovies=Favourite.getFavouriteList();
         //this.alreadyWatched=Watched.getWatchedlist();
     }
-
-
-
-    public ArrayList<Integer> getIDforFAV() {
+    public int getMounth() {
+        return mounth;
+    }
+    public ArrayList<Integer> getIDforFAV()
+    {
         return IDforFAV;
     }
-
     public ArrayList<Integer> getIDforLAter() {
         return IDforLAter;
     }
-
     public ArrayList<Integer> getIDforalreadyWatched() {
         return IDforalreadyWatched;
     }
   /* public int paln(){
         return Basic.PlanACounter();
    }*/
-
     public void setSubscrebtion_type(String subscrebtion_type) {
         this.subscrebtion_type = subscrebtion_type;
     }
@@ -152,15 +138,17 @@ public class User extends personx implements ReadFiles {
         FavouriteMovies.add(nameOfmovie);
 
     }*/
-
     public String getSubscrebtion_type() {
         return subscrebtion_type;
     }
-
-
-
-
     static ArrayList<User> Userslist = new ArrayList<User>();
+
+    /***
+     * read the file of tha data  of all users
+     * @param Path the path to the file
+     * @return array list of users that contain the data
+     * @throws IOException
+     */
     public static ArrayList<User> Read(String Path) throws IOException {
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         // Create a FileReader object to read the file
@@ -248,9 +236,6 @@ public class User extends personx implements ReadFiles {
         }
         return result;
     }*/
-
-
-
    /* public ArrayList<director> SearchDirectorByName(String name) {
         ArrayList<director> result = new ArrayList<director>();
         for (director DirectorData : MovieDirector) {
@@ -260,24 +245,39 @@ public class User extends personx implements ReadFiles {
         }
         return result;
     }*/
-
-
     /*void Add_rate(){
 
 
     }*/
- public String  display(){
-       // String = (id+","username, pass,String Fname,String Lname,String email,int age,String nationality,String subscrebtiontype
- return id+","+getUsername()+","+getPassword()+","+firstname+","+secondname+","+getEmail()+","+age+","+nationality+","+subscrebtion_type;
 
+    /***
+     *  collect all data of this user
+     * @return all data ot one user
+     */
+ public String  displayfile(){
+
+     String data=null;
+    for (int i=0;i<getIDforFAV().size();++i) {
+
+        // String = (id+","username, pass,String Fname,String Lname,String email,int age,String nationality,String subscrebtiontype
+         data= id + "," + getUsername() + "," + getPassword() + "," + firstname + "," + secondname + "," + getEmail() + "," + age + "," + nationality + "," + subscrebtion_type + "," + mounth + "," +getIDforFAV().get(i);
+
+    }
+    return data;
+    // return id + "," + getUsername() + "," + getPassword() + "," + firstname + "," + secondname + "," + getEmail() + "," + age + "," + nationality + "," + subscrebtion_type + "," + mounth + ",";
  }
 
+    /***
+     * write on the file
+     * @param Path the path to the file
+     * @param witeuser the array of all users that contain all data and all changes
+     */
      public static void WriteFile(String Path,ArrayList<User> witeuser) {
         try {
             if (Path.equals("hager.txt")) {
                 String filePath = "hager.txt";
 
-                Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
+                //Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 
                /* for (User u: witeuser) {
                     String userData = u.toString();
@@ -289,10 +289,11 @@ public class User extends personx implements ReadFiles {
                 Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 
                 for (User u : witeuser) {
-                    String userData = u.display();
+                    String userData = u.displayfile();
                     Files.write(Paths.get(filePath), (userData + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
-                    System.out.println("Data appended to the file successfully.");
+
                 }
+                System.out.println("Data appended to the file successfully.");
             }
 
         } catch (IOException e) {
@@ -300,10 +301,16 @@ public class User extends personx implements ReadFiles {
         }
     }
 
+    /**
+     * check the limit of movies by user subscription plan and each plan has a limit of movies
+     * @param m the movie that will watched by the user
+     * @param wa array list of all movies
+     * @param u the user that will watch the movie
+     */
     public  void checknofmovies(Movie m,ArrayList<Movie> wa,User u){
 
             if (u.getSubscrebtion_type().toLowerCase().equals("basic")){
-                if (wa.size()<=5){
+                if (wa.size()<5){
                     wa.add(m);
                     BNoOfMovies++;
                     System.out.println("added done");
@@ -314,7 +321,7 @@ public class User extends personx implements ReadFiles {
 
             }
             else if (u.getSubscrebtion_type().toLowerCase().equals("standard")){
-                if (wa.size()<=10){
+                if (wa.size()<10){
                     wa.add(m);
                     SNoOfMovies++;
                     System.out.println("added done");
@@ -325,7 +332,7 @@ public class User extends personx implements ReadFiles {
 
             }
             else if (u.getSubscrebtion_type().toLowerCase().equals("premium")){
-                if (wa.size()<=30){
+                if (wa.size()<30){
                     PNoOfMovies++;
                     wa.add( m);
                     System.out.println("added done");
@@ -336,6 +343,8 @@ public class User extends personx implements ReadFiles {
 
             }
     }
+
+
     public  ArrayList<Movie> getFavouriteMovies()
     {
         return this.FavouriteMovies;

@@ -6,13 +6,16 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * watched class that inherit from movies parent  class
+ */
 public class Watched extends Movie{
 
     static ArrayList<Movie> watchedlist =new ArrayList<>();
 
-    public static ArrayList<Movie> getWatchedlist() {
+/*    public static ArrayList<Movie> getWatchedlist() {
         return watchedlist;
-    }
+    }*/
 /* public Watched(int movieId, String movieTitle, int movieDate, int movieTime, String movieLanguage, int IMDB_Score, String movieCountry, String movieBudget, String movieRevenue, int UserRating, String Discription, ArrayList<Movie> watchedlist) {
         super(movieId, movieTitle, movieDate, movieTime, movieLanguage, IMDB_Score, movieCountry, movieBudget, movieRevenue, UserRating, Discription);
         this.watchedlist = watchedlist;
@@ -34,6 +37,10 @@ public class Watched extends Movie{
             }
     }*/
 
+    /***
+     * display the watched list of the user
+     * @param usr the user that will display they list
+     */
     public static void DisplayWatched(User usr){
         //watchedlist= User.getAlreadyWatched();
         for (Movie movies:usr.getAlreadyWatched() ){

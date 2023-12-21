@@ -8,13 +8,7 @@ public abstract class personx {
    private   int password;
     String firstname;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     String secondname;
     private String email;
@@ -31,6 +25,13 @@ public abstract class personx {
  public personx(){
 
  }
+    public int getId() {
+        return id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public String getUsername() {
         return username;
     }

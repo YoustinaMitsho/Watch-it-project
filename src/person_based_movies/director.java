@@ -20,7 +20,12 @@ public class director extends movie_person {
         super(age, Gender, nationality, f_name, l_name);
 
     }
-
+    /***
+     * read the file of directors data
+     * @param Path the path to the file
+     * @return array list of directors that contain all data
+     * @throws IOException
+     */
     public static ArrayList<director> Read(String Path) throws IOException {
        // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         // Create a FileReader object to read the file
@@ -51,28 +56,32 @@ public class director extends movie_person {
         }
         return director_list;
     }
-
-    // file
-
-
     public void setDirector_name(String namedi) {
         this.F_name=namedi;
     }
     public void setDirector_lname(String namedi) {
         this.L_name=namedi;
     }
-
-
-    public String displaydiretor(){
+    /**
+     * override from parent class (movie preson) and collect all data
+     * @return all data of each actor
+     */
+    public String display(){
         //int age, String Gender, String nationality, String f_name, String l_name
         return Age+","+Gender+","+getNationality()+","+getF_name()+","+getL_name();
 
 
     }
+
+    /**
+     * write in the file
+     * @param Path to file
+     * @param Directorwite array of all directors with all changes
+     */
     public static void WriteFile(String Path,ArrayList<director> Directorwite) {
         try {
-            if (Path.equals("movie_persion_di.txt")) {
-                String filePath = "movie_persion_di.txt";
+            if (Path.equals("director.txt")) {
+                String filePath = "director.txt";
 
                 Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 
@@ -80,10 +89,11 @@ public class director extends movie_person {
                 Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 
                 for (director d : Directorwite) {
-                    String userData = d.displaydiretor();
+                    String userData = d.display();
                     Files.write(Paths.get(filePath), (userData + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
-                    System.out.println("Data appended to the file successfully.");
+
                 }
+                System.out.println("Data appended to the file successfully.");
             }
 
         } catch (IOException e) {

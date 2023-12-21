@@ -6,14 +6,17 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+/***
+ * class Favourite which inherit from movie parent class
+ */
 public class Favourite extends Movie {
 
 
     static ArrayList<Movie>FavouriteList= new ArrayList<>();
 
-    public static ArrayList<Movie> getFavouriteList() {
+    /*public static ArrayList<Movie> getFavouriteList() {
         return FavouriteList;
-    }
+    }*/
 // public Favourite(int movieId, String movieTitle, Date movieDate, int movieTime, String movieLanguage, int IMDB_Score, String movieCountry, int movieBudget, int movieRevenue, Image moviePoster, double UserRating, String Discription, ArrayList<Movie> favouriteList) {
         // p(int movieId, String movieTitle, Date movieDate, int movieTime, String F1_cast, String s1_cast, String f2_cast, String c2_cast, String f3_cast, String c3_cast, String genera, String FnameDirector, String snameDirector, String movieLanguage, int IMDB_Score , String  movieCountry, String movieBudget, String movieRevenue, double UserRating, String Discription)
 
@@ -21,17 +24,23 @@ public class Favourite extends Movie {
        // FavouriteList = favouriteList;
     //}
 
-    public Favourite(boolean fav, String which){
+  /*  public Favourite(boolean fav, String which){
 
         super(fav, "fav");
     }
     public Favourite(String name){
 
-    }
+    }*/
     /*public Favourite(String name){
         super();
         this.MovieTitle=name;
     }*/
+
+    /***
+     * function that add to user favourite list a movie
+     * @param mov object from movie class that will add in the list
+     * @param u object from user class who will add movie to his list
+     */
     protected static void AddFavouritemovie(Movie mov,User u){
         boolean flag=false;
         for (Movie FAv:u.getFavouriteMovies()) {
@@ -50,6 +59,11 @@ public class Favourite extends Movie {
         }
     }
 
+    /**
+     * function that remove a movie from user favourite list
+     * @param id the id of the movie that will be removed from favourite
+     * @param u object from user class who will remove movie from his list
+     */
     protected static void RemoveMovieFromFavourite(int id,User u){
         for (Movie movie: u.getFavouriteMovies()) {
             if (movie.getMovieId()==id){
@@ -61,6 +75,10 @@ public class Favourite extends Movie {
         }
     }
 
+    /****
+     * display the favourite list of the user
+     * @param us the user that will display they list
+     */
     public static void DisplayFavourite(User us){
         int i=1;
         for (Movie movies: us.getFavouriteMovies()) {

@@ -17,13 +17,18 @@ public class cast extends movie_person implements ReadFiles {
   public static ArrayList<cast> cast_list = new ArrayList<cast>();
 
 
-    public cast(int age, String Gender, String nationality, String f_name, String l_name) {
+public cast(int age, String Gender, String nationality, String f_name, String l_name) {
         super(age, Gender, nationality, f_name, l_name);
 
     }
 
 
-
+    /***
+     * read the file of actors data
+     * @param Path the path to the file
+     * @return array list of actors that contain all data
+     * @throws IOException
+     */
     public static ArrayList<cast> Read(String Path) throws IOException {
         // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         // Create a FileReader object to read the file
@@ -54,12 +59,6 @@ public class cast extends movie_person implements ReadFiles {
         }
         return cast_list;
     }
-
-
-
-
-
-
     public void setCast_name(String  name) {
         this.F_name=name;
     }
@@ -68,18 +67,26 @@ public class cast extends movie_person implements ReadFiles {
         this.L_name=lastname;
     }
 
-    public String displaycast(){
+    /**
+     * override from parent class (movie preson) and collect all data
+     * @return all data of each actor
+     */
+    public String display(){
         //int age, String Gender, String nationality, String f_name, String l_name
         return Age+","+Gender+","+getNationality()+","+getF_name()+","+getL_name();
 
 
     }
 
-
+    /**
+     * write in the file
+     * @param Path to file
+     * @param castwite array of all actors with all changes
+     */
     public static void WriteFile(String Path,ArrayList<cast> castwite) {
         try {
-            if (Path.equals("movie_persion_ca.txt")) {
-                String filePath = "movie_persion_ca.txt";
+            if (Path.equals("cast.txt")) {
+                String filePath = "cast.txt";
 
                 Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 
@@ -87,10 +94,11 @@ public class cast extends movie_person implements ReadFiles {
                 Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 
                 for (cast c : castwite) {
-                    String userData = c.displaycast();
+                    String userData = c.display();
                     Files.write(Paths.get(filePath), (userData + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
-                    System.out.println("Data appended to the file successfully.");
+
                 }
+                System.out.println("Data appended to the file successfully.");
             }
 
         } catch (IOException e) {

@@ -1,6 +1,6 @@
 package nureen;
 
-import mitsho.Genre;
+import mitsho.*;
 import mitsho.Movie;
 import mitsho.Subscription;
 import person_based_movies.cast;
@@ -9,9 +9,17 @@ import person_based_movies.director;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * the admin that inherit from personx parent class
+ */
 public class Admin extends personx {
 
-    private static Admin admin;
+//upcasting
+    /***
+     * upcasting from sup class to suber class
+     */
+    private static personx admin2=  new Admin();
+    //private static Admin admin;
     Subscription sub = new Subscription();
 
     //ArrayList<Movie> movies = new ArrayList<Movie>();
@@ -19,7 +27,7 @@ public class Admin extends personx {
     ArrayList<String> moviescategory = new ArrayList<String>();///arraylist of categories 3nd youstine
     ArrayList<Movie> MoviesList = new ArrayList<>();
     ArrayList<cast> MovieCast = new ArrayList<>();
-    ArrayList<Genre> MovieGenre = new ArrayList<>();
+   // ArrayList<Genre> MovieGenre = new ArrayList<>();
 
     ArrayList<director> MovieDirector = new ArrayList<>();
 
@@ -27,23 +35,34 @@ public class Admin extends personx {
         super(id, username, pass,  Fname,  Lname,  email);
 
     }
+    private Admin(){}
 
+    /***
+     * make an instant from admin
+     * @return one instant from admin
+     */
     public static Admin getInstance() {
-        if (admin == null) {
+        if (admin2 == null) {
             // If no instance exists, create one
-            admin = new Admin(5,"admin",12341234,"admin","admin","admin@admin.com");
+            admin2 = new Admin(5,"admin",12341234,"admin","admin","admin@admin.com");
         }
-        return admin;
+        return (Admin) admin2;
     }
-
     public static void DisplayAdminData(){
-        System.out.println(admin.id+","+admin.getUsername()+","+admin.getEmail());
+        System.out.println(admin2.id+","+admin2.getUsername()+","+admin2.getEmail());
     }
    /* public void add_movie(Movie addmovie) {
         MoviesList.add(addmovie);
         System.out.println("movie is added successfully!!");
     }
 */
+
+    /***
+     *the admin who can add movies with actors and directors and check if the movie is exist or not
+     * @param mov the array that contain all data of all movies
+     * @param casts  the array that contain all data of all actors
+     * @param directors  the array that contain all data of all directors
+     */
    public void  add_movie(ArrayList<Movie> mov,ArrayList<cast>casts,ArrayList<director>directors) {
        Scanner dataofmovie = new Scanner(System.in);
 
@@ -97,7 +116,7 @@ public class Admin extends personx {
        String actor2_ln = dataofmovie.next();
        boolean iscast2found=false;
        for (cast data2:casts) {
-           if(actor1_fn.equals(data2.getF_name())&&actor1_ln.equals(data2.getL_name())){
+           if(actor2_fn.equals(data2.getF_name())&&actor2_ln.equals(data2.getL_name())){
                System.out.println("actor exists , no need to add its data");
                iscast2found=true;
                break;
@@ -124,7 +143,7 @@ public class Admin extends personx {
        String actor3_ln = dataofmovie.next();
        boolean iscast3found=false;
        for (cast data3:casts) {
-           if(actor1_fn.equals(data3.getF_name())&&actor1_ln.equals(data3.getL_name())){
+           if(actor3_fn.equals(data3.getF_name())&&actor3_ln.equals(data3.getL_name())){
                System.out.println("actor exists , no need to add its data");
                iscast3found=true;
                break;
@@ -183,7 +202,7 @@ public class Admin extends personx {
        System.out.print("Revenue of the movie: ");
        String revenue = dataofmovie.next();
        System.out.print("Movie description:");
-       String description = dataofmovie.next();
+       String description = dataofmovie.nextLine();
        Movie MOV = (Movie) mov.get(mov.size() - 1);
        int idnewmovie = mov.getLast().getMovieId() + 1;
        int id=mov.size()+1;
@@ -314,6 +333,12 @@ public class Admin extends personx {
         System.out.println("----------------------------------------------------------------------------------------------------------");
 
     }*/
+
+    /**
+     * tha admin who can delete movies
+     * @param removedmovie the id of the movie that will be deleted
+     * @param movie2 the array that contain all  data of all movies
+     */
     public void remove_movie(int removedmovie,ArrayList<Movie>movie2) {
         //ArrayList<String> movies = new ArrayList<String>();///arrayoflist of movies 3nd youstina
         String genera ;
@@ -357,6 +382,9 @@ public class Admin extends personx {
         MovieGenre.add(G);
     }*/
 
+    /***
+     * display the most subscription plan from three plans we have
+     */
     public void displayplannumbers() {
         if (Subscription.PlanACounter > Subscription.PlanBCounter) {
             if (Subscription.PlanACounter > Subscription.PlanCCounter && Subscription.PlanCCounter > Subscription.PlanBCounter) {
@@ -380,6 +408,10 @@ public class Admin extends personx {
         }
     }
 
+    /**
+     * collect all revenue of the three plans
+     * @return the total revenue
+     */
     public   int DisplayRevenu() {
         return sub.CalcRevenu();
 
