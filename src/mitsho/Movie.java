@@ -220,12 +220,20 @@ public class Movie  {
      */
     public static ArrayList<Movie> ShowMovieGenre(String MovieName) {
         ArrayList<Movie> g = new ArrayList<>();
+       boolean isfounf=false;
         for (Movie movie : MoviesList) {
+
             if (MovieName.equals(movie.genera)) {
                 g.add(movie);
+                isfounf=true;
             }
+
+        }
+        if (isfounf==false){
+            System.out.println("genera not found");
         }
         return g;
+
     }
 
     /**
@@ -364,27 +372,5 @@ public class Movie  {
      * @param Path the path to the file
      * @param Movieswite array list of all movies that contaii all data
      */
-   /* public void Write(String Path, ArrayList<Movie> Movieswite) throws IOException {
-        try {
-            if (Path.equals("OOP_Movies.txt")) {
-                String filePath = "OOP_Movies.txt";
 
-                Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
-
-
-                Files.write(Paths.get(filePath), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
-
-                for (Movie m : Movieswite) {
-                    String userData = m.displaymovie();
-                    Files.write(Paths.get(filePath), (userData + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
-
-                }
-                System.out.println("Data appended to the file successfully.");
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    }*/
 }

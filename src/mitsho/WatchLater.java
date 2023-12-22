@@ -44,15 +44,20 @@ protected static void Addwatchlater(Movie mov,User u){
      */
 protected static void RemoveMovieFromWatchLater(int id,User u){
 
-
+boolean found=false;
         for (Movie movie:u.getWatchLaterList() ) {
             if (movie.getMovieId()==id){
                 u.getWatchLaterList().remove(movie);
             System.out.println("deleted "+ movie.getMovieTitle() +" successfly");
+            found=true;
                 break;
             }
 
+
         }
+       if(found==false){
+        System.out.println("Movies not found");
+       }
 
 
     }

@@ -495,7 +495,12 @@ static void UserProfile(ArrayList<Movie> movies, User user, ArrayList<User>users
                 System.out.println("enterthe id of  movie you want to delete:");
                 int x =scan.nextInt();
                 WatchLater.RemoveMovieFromWatchLater(x,user);
-                    UserProfile(movies, user, users,admin,di,ca);
+                UserProfile(movies, user, users,admin,di,ca);
+
+
+
+
+
             }
             }
             else if(DeleteInput==2){
@@ -508,7 +513,7 @@ static void UserProfile(ArrayList<Movie> movies, User user, ArrayList<User>users
                 System.out.println("enter id of  movie you want to delete:");
                     int movie;
                     movie=scan.nextInt();
-                Favourite.RemoveMovieFromFavourite(movie,user );
+                    Favourite.RemoveMovieFromFavourite(movie,user );
                     UserProfile(movies, user, users,admin,di,ca);
             }
             }
@@ -648,6 +653,7 @@ static void Search(ArrayList<Movie> movies, User user, ArrayList<User> users,Adm
             Search(movies, user, users,admin,di,ca);
         } else if (btn == 4) {
             int i=1;
+
             System.out.println("enter genre:");
             String genre = scan.next();
             ArrayList<Movie> moveganara=Movie.ShowMovieGenre(genre);
@@ -785,7 +791,7 @@ static void EditedMovie(ArrayList<User> user,ArrayList<Movie> movies,Admin admin
         else if (  AdminChoice2ToMovies == 2) {
             int deletid;
             for (Movie mo:movies) {
-                System.out.println(mo.displaymovie());
+                System.out.println(mo.getMovieId()+") "+mo.getMovieTitle()+" "+mo.discription);
             }
             System.out.println("whitch id pf movie you want to delete ?");
             deletid=inputAdmin.nextInt();

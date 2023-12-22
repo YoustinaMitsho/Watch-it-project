@@ -40,17 +40,19 @@ public class Favourite extends Movie {
      * @param u object from user class who will remove movie from his list
      */
     protected static void RemoveMovieFromFavourite(int id,User u){
+        boolean found =false;
         for (Movie movie: u.getFavouriteMovies()) {
             if (movie.getMovieId()==id){
                 u.getFavouriteMovies().remove(movie);
                 System.out.println("deleted "+ movie.getMovieTitle() +" successfly");
+                found=true;
                 break;
             }
-            else {
-                System.out.println("movie not found");
-                break;
-            }
+
             //break;
+        }
+        if(found==false){
+            System.out.println("Movies not found");
         }
     }
 

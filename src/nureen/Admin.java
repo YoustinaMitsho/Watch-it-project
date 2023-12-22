@@ -183,8 +183,8 @@ public void  add_movie(ArrayList<Movie> mov,ArrayList<cast>casts,ArrayList<direc
      * @param removedmovie the id of the movie that will be deleted
      * @param movie2 the array that contain all  data of all movies
      */
-    public void remove_movie(int removedmovie,ArrayList<Movie>movie2) {
-        //ArrayList<String> movies = new ArrayList<String>();///arrayoflist of movies 3nd youstina
+public void remove_movie(int removedmovie,ArrayList<Movie>movie2) {
+
         String genera ;
         for (Movie mo:movie2) {
           if (mo.getMovieId()==removedmovie){
