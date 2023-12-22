@@ -25,6 +25,11 @@ public class Movie  {
     ArrayList<director> MovieDirector = new ArrayList<director>();
     String MovieLanguage;
     int IMDB_Score;
+
+    public int getUserRating() {
+        return UserRating;
+    }
+
     int UserRating;
     String MovieCountry;
     String MovieBudget;
@@ -302,7 +307,7 @@ public class Movie  {
      * write in the file all the updates thah changed
      *
      * @param Path       the path to the file
-     * @param Movieswite array list of all movies that contaii all data
+     * @param Movieswite array list of all movies that contain all data
      */
     public static void WriteFile(String Path, ArrayList<Movie> Movieswite) {
         try {

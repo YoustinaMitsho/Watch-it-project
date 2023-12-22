@@ -79,7 +79,7 @@ public static void  register(ArrayList<User> user, ArrayList<Movie> movies,Admin
             if (inputString.length() >= 8 && inputString.length() <= 16) {
                 break;
             } else {
-                System.out.println("Invalid input length. It should be between 8 and 16.");
+                System.out.println("Invalid input length. It should be between 8 and 16 .");
             }
         } catch (InputMismatchException e) {
             inputuser.next();
@@ -90,7 +90,7 @@ public static void  register(ArrayList<User> user, ArrayList<Movie> movies,Admin
         String firstname;
         while (true) {
             System.out.println("enter your first name:");
-            firstname = inputuser.next();//secondname
+            firstname = inputuser.next();
             if (firstname.matches("^[a-zA-z]+$")) {
                 break;
             } else {
@@ -223,27 +223,35 @@ public static  void login (ArrayList<User> user, ArrayList<Movie> movies,Admin a
         System.out.println("enter your email ");
         String entered_email =inputuser.next();
         User userLogIn = null;
-        do {
-            for (User u:user) {
-                if (entered_email.equals(u.getEmail())) {
-                    flag_of_enter = true;
+        try {
+
+
+            do {
+                for (User u : user) {
+                    if (entered_email.equals(u.getEmail())) {
+                        flag_of_enter = true;
+                    }
+                    if (flag_of_enter == true) {
+                        do {
+                            System.out.println("enter password:");
+                            int passwordx = inputuser.nextInt();
+                            if (passwordx == u.getPassword()) {
+                                System.out.println("welcome");
+                                pass = true;
+                                userLogIn = u;
+                            } else {
+                                System.out.println("invalid password, enter again");
+                            }
+                        } while (pass == false);
+                    }
+                    if (flag_of_enter && pass) break;
                 }
-                if (flag_of_enter == true) {
-                    do {
-                        System.out.println("enter password:");
-                        int passwordx = inputuser.nextInt();
-                        if (passwordx == u.getPassword()) {
-                            System.out.println("welcome");
-                            pass = true;
-                            userLogIn = u;
-                        } else {
-                            System.out.println("invalid password, enter again");
-                        }
-                    } while (pass == false);
-                }
-                if(flag_of_enter && pass) break;
-            }
-        }while (flag_of_enter && !pass);
+
+            } while (flag_of_enter && !pass);
+        }catch (InputMismatchException e) {
+            inputuser.next();
+            System.out.println("Invalid input. Please enter an integer.");
+        }
         if(!flag_of_enter){
             System.out.println("invalid email enter again ");
             menu(user, movies,admin ,di,ca);
@@ -496,8 +504,8 @@ static void UserProfile(ArrayList<Movie> movies, User user, ArrayList<User>users
                 }
                 else{
                 System.out.println("enter id of  movie you want to delete:");
-                int movie;
-                movie=scan.nextInt();
+                    int movie;
+                    movie=scan.nextInt();
                 Favourite.RemoveMovieFromFavourite(movie,user );
                     UserProfile(movies, user, users,admin,di,ca);
             }
@@ -685,12 +693,13 @@ static void displayMovies(User user, ArrayList<Movie> movies, ArrayList<User> us
         }
         else if(choose==2){
 
-           List<Movie>m =Top10movies.TopMovies();
+           List<Movie> moviesort =Top10movies.TopMovies();
             int i=1;
-            for (Movie mo:m) {
+            printTopTenHeartColoredBarChart(moviesort);
+           /* for (Movie mo:m) {
                 System.out.println(i+" : "+mo.getMovieTitle());
                 ++i;
-            }
+            }*/
             displayMovies(user, movies, users,admin,di,ca);
         }
         else if(choose==3) {
@@ -800,6 +809,42 @@ static void EditedMovie(ArrayList<User> user,ArrayList<Movie> movies,Admin admin
         }
         EditedMovie( user, movies, admin,di,ca);
     }
+
+
+public static void printTopTenHeartColoredBarChart(List<Movie> movies) {
+        // Sort movies by rating in descending order
+        movies.sort(Comparator.comparingInt(Movie::getUserRating).reversed());
+
+        // Find the maximum rating to scale the bars
+        int maxRating = movies.stream().mapToInt(Movie::getUserRating).max().orElse(0);
+
+        // ANSI color codes
+        String ANSI_RESET = "\u001B[0m";
+
+        // Iterate through the top ten movies and print the heart-colored bar chart with rating
+        int topTenCount = Math.min(10, movies.size());
+        for (int i = 0; i < topTenCount; i++) {
+            Movie movie = movies.get(i);
+            String name = movie.getMovieTitle();
+            int rating = movie.getUserRating();
+
+            // Calculate the length of the bar
+            int barLength = (int) Math.ceil((double) rating / maxRating * 10);
+
+            // Adjust color intensity based on the rating
+            int colorIntensity = 255 - (rating * 25);
+
+            // ANSI color code with RGB values for pink
+            String ANSI_COLOR = String.format("\u001B[38;2;%d;%d;%dm", 255, colorIntensity, 255);
+
+            // Print the heart-colored bar chart with rating
+            System.out.printf("%-10s | %s%s%s %d%n", name, ANSI_COLOR, "❤".repeat(barLength), ANSI_RESET, rating);
+        }
+    }
+
 }
+
+
+
 
 

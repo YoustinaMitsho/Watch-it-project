@@ -33,10 +33,6 @@ public static int CalcRevenu() {
      * calculate revenue for each plan
      * @return revenue for each plan
      */
-/*int CalculatePriceOf3(){
-        return 0;
-     };*/
-
 public static int ReturnRevenu(String subscrebtion_type ) {
 
         int  res=0;

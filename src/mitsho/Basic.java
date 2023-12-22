@@ -14,9 +14,4 @@ public class Basic extends Subscription implements CalcRevenue{
     public int CalculatePriceOf3() {
         return (Price * PlanACounter) ;
     }
-
-   /* @Override
-    protected int CalculatePriceOf3(){
-        return (Price * PlanACounter) ;
-    }*/
 }

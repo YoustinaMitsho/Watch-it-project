@@ -46,6 +46,10 @@ public class Favourite extends Movie {
                 System.out.println("deleted "+ movie.getMovieTitle() +" successfly");
                 break;
             }
+            else {
+                System.out.println("movie not found");
+                break;
+            }
             //break;
         }
     }
