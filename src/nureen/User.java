@@ -305,42 +305,44 @@ public static void WriteFile(String Path,ArrayList<User> witeuser) {
      * @param wa array list of all movies
      * @param u the user that will watch the movie
      */
-    public  void checknofmovies(Movie m,ArrayList<Movie> wa,User u){
+public  void checknofmovies(Movie m,ArrayList<Movie> wa,User u) {
+    for (Movie data : wa) {
 
-            if (u.getSubscrebtion_type().toLowerCase().equals("basic")){
-                if (wa.size()<5){
+        if (data.getMovieId() == m.getMovieId()) {
+            System.out.println("movie already found");
+            break;
+        } else {
+            if (u.getSubscrebtion_type().toLowerCase().equals("basic")) {
+                if (wa.size() < 5) {
                     wa.add(m);
                     BNoOfMovies++;
                     System.out.println("added done");
-                }
-                else{
+                } else {
                     System.out.println("your limit of movie finished ");
                 }
 
-            }
-            else if (u.getSubscrebtion_type().toLowerCase().equals("standard")){
-                if (wa.size()<10){
+            } else if (u.getSubscrebtion_type().toLowerCase().equals("standard")) {
+                if (wa.size() < 10) {
                     wa.add(m);
                     SNoOfMovies++;
                     System.out.println("added done");
-                }
-                else{
+                } else {
                     System.out.println("your limit of movie finished ");
                 }
 
-            }
-            else if (u.getSubscrebtion_type().toLowerCase().equals("premium")){
-                if (wa.size()<30){
+            } else if (u.getSubscrebtion_type().toLowerCase().equals("premium")) {
+                if (wa.size() < 30) {
                     PNoOfMovies++;
-                    wa.add( m);
+                    wa.add(m);
                     System.out.println("added done");
-                }
-                else{
+                } else {
                     System.out.println("your limit of movie finished ");
                 }
 
             }
+        }
     }
+}
 
 
     public  ArrayList<Movie> getFavouriteMovies()

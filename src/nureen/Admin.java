@@ -13,35 +13,17 @@ import java.util.Scanner;
  * the admin that inherit from personx parent class
  */
 public class Admin extends personx {
-
-//upcasting
-    /***
-     * upcasting from sup class to suber class
-     */
-    //private static personx admin2=  new Admin();
-    private static Admin admin;
+private static Admin admin;
     Subscription sub = new Subscription();
-
-    //ArrayList<Movie> movies = new ArrayList<Movie>();
-    ArrayList<Movie> moviesList = new ArrayList<Movie>();
-    ArrayList<String> moviescategory = new ArrayList<String>();///arraylist of categories 3nd youstine
-    ArrayList<Movie> MoviesList = new ArrayList<>();
-    ArrayList<cast> MovieCast = new ArrayList<>();
-   // ArrayList<Genre> MovieGenre = new ArrayList<>();
-
-    ArrayList<director> MovieDirector = new ArrayList<>();
-
-    private Admin(int id, String username, int pass, String Fname, String Lname, String email){
+private Admin(int id, String username, int pass, String Fname, String Lname, String email){
         super(id, username, pass,  Fname,  Lname,  email);
 
     }
-    private Admin(){}
-
     /***
      * make an instant from admin
      * @return one instant from admin
      */
-    public static Admin getInstance() {
+public static Admin getInstance() {
         if (admin == null) {
             // If no instance exists, create one
             admin = new Admin(5,"admin",12341234,"admin","admin","admin@admin.com");
@@ -49,37 +31,22 @@ public class Admin extends personx {
         return (Admin) admin;
     }
 
-    public static void DisplayAdminData(){
-        System.out.println(admin.id+","+admin.getUsername()+","+admin.getEmail());
-    }
-   /* public void add_movie(Movie addmovie) {
-        MoviesList.add(addmovie);
-        System.out.println("movie is added successfully!!");
-    }
-*/
-
     /***
      *the admin who can add movies with actors and directors and check if the movie is exist or not
      * @param mov the array that contain all data of all movies
      * @param casts  the array that contain all data of all actors
      * @param directors  the array that contain all data of all directors
      */
-   public void  add_movie(ArrayList<Movie> mov,ArrayList<cast>casts,ArrayList<director>directors) {
+public void  add_movie(ArrayList<Movie> mov,ArrayList<cast>casts,ArrayList<director>directors) {
        Scanner dataofmovie = new Scanner(System.in);
-
-
            System.out.print("Movie name:");
        String movie_name = dataofmovie.next();
            for (Movie data:mov) {
                if (movie_name.equals(data.getMovieTitle())) {
                    System.out.println("movie already exists");
                 add_movie(mov,casts,directors);
-
                }
            }
-
-      // System.out.print("Movie name:");
-       //movie_name = dataofmovie.nextLine();
        System.out.print("Movie duration: ");
        int movie_dur = dataofmovie.nextInt();
        System.out.print("Movie release date: ");
@@ -203,140 +170,14 @@ public class Admin extends personx {
        System.out.print("Revenue of the movie: ");
        String revenue = dataofmovie.next();
        System.out.print("Movie description:");
-       //m4
+       dataofmovie.nextLine();
        String description = dataofmovie.nextLine();
-       Movie MOV = (Movie) mov.get(mov.size() - 1);
-       int idnewmovie = mov.getLast().getMovieId() + 1;
-       dataofmovie.close();
        int id=mov.size()+1;
        int rate=0;
        mov.add(new Movie(id, movie_name, movie_year, movie_dur, actor1_fn, actor1_ln, actor2_fn, actor2_ln, actor3_fn, actor3_ln, movie_genre, director_fn, director_ln, movie_lang, imdb, country, budget, revenue, rate, description));
-       //MoviesList.add(addmovie);
        System.out.println("movie is added successfully!!");
        System.out.println("----------------------------------------------------------------------------------------------------------");
-
    }
-
-   /* public void  add_movie2(ArrayList<Movie> mov,ArrayList<cast>casts,ArrayList<director>directors) {
-        Scanner dataofmovie = new Scanner(System.in);
-        String movie_name;
-        System.out.print("Movie name:");
-        movie_name = dataofmovie.nextLine();
-        for (Movie addmovie:mov) {
-            if (movie_name.equals(addmovie.getMovieTitle())) {
-                System.out.println("movie already exists");
-                add_movie2(mov,casts,directors);
-            }
-        }
-
-        System.out.print("Movie duration: ");
-        int movie_dur = dataofmovie.nextInt();
-        System.out.print("Movie release date: ");
-        int movie_year = dataofmovie.nextInt();
-        System.out.print("First actor first name: ");
-        String actor1_fn = dataofmovie.next();
-        System.out.print("First actor last name: ");
-        String actor1_ln = dataofmovie.next();
-        for (cast castt:casts) {
-            if (actor1_fn.equals(castt.getF_name()) && actor1_ln.equals(castt.getL_name())) {
-                System.out.println("actor exists , no need to add its data");
-            } else {
-                System.out.println("----------------------------------------------------------------------");
-                System.out.print("Add data of the cast !");
-                System.out.print("Age:");
-                int AgeOfActor = dataofmovie.nextInt();
-                System.out.print("gender:");
-                String actor_gender = dataofmovie.next();
-                System.out.print("Nationality: ");
-                String actor_nationality = dataofmovie.next();
-                casts.add(new cast(AgeOfActor, actor_gender, actor_nationality, actor1_fn, actor1_ln));
-                System.out.println("----------------------------------------------------------------------");
-            }
-        }
-        System.out.println("Second actor first name: ");
-        String actor2_fn = dataofmovie.next();
-        System.out.println("Second actor last name: ");
-        String actor2_ln = dataofmovie.next();
-        for(cast castt:casts) {
-            if (actor2_fn.equals(castt.getF_name()) && actor2_ln.equals(castt.getL_name())) {
-                System.out.println("actor exists , no need to add its data");
-            } else {
-                System.out.println("----------------------------------------------------------------------");
-                System.out.print("Add data of the cast !");
-                System.out.print("Age:");
-                int AgeOfActor2 = dataofmovie.nextInt();
-                System.out.print("gender:");
-                String actor_gender2 = dataofmovie.next();
-                System.out.print("Nationality: ");
-                String actor_nationality2 = dataofmovie.next();
-                casts.add(new cast(AgeOfActor2, actor_gender2, actor_nationality2, actor2_fn, actor2_ln));
-                System.out.println("----------------------------------------------------------------------");
-            }
-        }
-        System.out.println("Third actor fname: ");
-        String actor3_fn = dataofmovie.next();
-        System.out.println("Third actor last name: ");
-        String actor3_ln = dataofmovie.next();
-        for(cast castt:casts) {
-            if (actor3_fn.equals(castt.F_name) && actor3_ln.equals(castt.L_name)) {
-                System.out.println("actor exists , no need to add its data");
-            } else {
-                System.out.println("----------------------------------------------------------------------");
-                System.out.print("Add data of the cast !");
-                System.out.print("Age:");
-                int AgeOfActor3 = dataofmovie.nextInt();
-                System.out.print("gender:");
-                String actor_gender3 = dataofmovie.next();
-                System.out.print("Nationality: ");
-                String actor_nationality3 = dataofmovie.next();
-                casts.add(new cast(AgeOfActor3, actor_gender3, actor_nationality3, actor3_fn, actor3_ln));
-                System.out.println("----------------------------------------------------------------------");
-            }
-        }
-        System.out.print("Movie genre");
-        String movie_genre = dataofmovie.next();
-        System.out.print("Director First name: ");
-        String director_fn = dataofmovie.next();
-        System.out.print("Director Last name: ");
-        String director_ln = dataofmovie.next();
-        for (director direct:directors) {
-            if (director_fn.equals(direct.F_name) && director_ln.equals(direct.L_name)) {
-                System.out.println("director exists , no need to add its data");
-            } else {
-                System.out.println("----------------------------------------------------------------------");
-                System.out.print("Add data of the director !");
-                System.out.print("Age:");
-                int AgeOfDirector = dataofmovie.nextInt();
-                System.out.print("gender:");
-                String director_gender = dataofmovie.next();
-                System.out.print("Nationality: ");
-                String director_nationality = dataofmovie.next();
-                directors.add(new director(AgeOfDirector, director_gender, director_nationality, director_fn, director_ln));
-                System.out.println("----------------------------------------------------------------------");
-            }
-        }
-        System.out.print("Movie language: ");
-        String movie_lang = dataofmovie.next();
-        System.out.print("IMDB score of the movie: ");
-        int imdb = dataofmovie.nextInt();
-        System.out.print("Country of production: ");
-        String country = dataofmovie.next();
-        System.out.print("Movie budget:");
-        String budget = dataofmovie.next();
-        System.out.print("Revenue of the movie: ");
-        String revenue = dataofmovie.next();
-        System.out.print("Movie description:");
-        String description = dataofmovie.nextLine();
-        Movie MOV= (Movie) mov.get(mov.size() - 1);
-        int idnewmovie = mov.getLast().MovieId + 1;
-
-        mov.add(new Movie(idnewmovie, movie_name, movie_year, movie_dur, actor1_fn, actor1_ln, actor2_fn, actor2_ln, actor3_fn, actor3_ln, movie_genre, director_fn, director_ln, movie_lang, imdb, country, budget, revenue, addmoviee.UserRating, description));
-        //MoviesList.add(addmovie);
-        System.out.println("movie is added successfully!!");
-        System.out.println("----------------------------------------------------------------------------------------------------------");
-
-    }*/
-
     /**
      * tha admin who can delete movies
      * @param removedmovie the id of the movie that will be deleted
@@ -375,16 +216,6 @@ public class Admin extends personx {
         }*/
     }
 
-   /* public void AddDirector(director d) {
-        MovieDirector.add(d);
-    }
-    public void AddCast(cast c) {
-        MovieCast.add(c);
-    }
-    public void AddGenre(Genre G) {
-        MovieGenre.add(G);
-    }*/
-
     /***
      * display the most subscription plan from three plans we have
      */
@@ -420,6 +251,4 @@ public class Admin extends personx {
 
 
     }
-
-
 }

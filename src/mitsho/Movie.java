@@ -378,16 +378,7 @@ public int getIMDB_Score() {
         }
         return UpCommingMovie;
     }
-    /***
-     * look for the top 10 movies by IMDB_score and save them in array
-     * @return array that contain the top 10 movies
-     */
-    public static List<Movie> TopMovies(){
-        List<Movie>sorted=MoviesList;
-        Collections.sort(sorted, Comparator.comparingDouble(Movie::getIMDB_Score).reversed());
-        List<Movie> top10Movies = sorted.subList(0, Math.min(sorted.size(), 10));
-        return top10Movies;
-    }
+
 
 
     /**
