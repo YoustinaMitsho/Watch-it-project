@@ -5,6 +5,7 @@ import person_based_movies.*;
 import nureen.User;
 
 import java.io.CharArrayReader;
+import java.io.Console;
 import java.io.IOException;
 import java.security.spec.RSAOtherPrimeInfo;
 import java.sql.SQLOutput;
@@ -74,6 +75,7 @@ public static void  register(ArrayList<User> user, ArrayList<Movie> movies,Admin
     while (true) {
         try {
             System.out.println("Enter integer password");
+
             password = inputuser.nextInt();
             String inputString = Integer.toString(password);
             if (inputString.length() >= 8 && inputString.length() <= 16) {
@@ -432,7 +434,7 @@ static void DisplayUserDiscoverPg(User user, ArrayList<Movie> movies, ArrayList<
             int idrate;
             int rate;
             for (Movie m:movies) {
-                System.out.println( m.displaymovie());
+                System.out.println( m.getMovieId()+") "+m.getMovieTitle()+" rating :"+m.getUserRating());
             }
             System.out.println("which  movie id you want to rate ?:");
             idrate=scan.nextInt();
@@ -696,10 +698,6 @@ static void displayMovies(User user, ArrayList<Movie> movies, ArrayList<User> us
            List<Movie> moviesort =Top10movies.TopMovies();
             int i=1;
             printTopTenHeartColoredBarChart(moviesort);
-           /* for (Movie mo:m) {
-                System.out.println(i+" : "+mo.getMovieTitle());
-                ++i;
-            }*/
             displayMovies(user, movies, users,admin,di,ca);
         }
         else if(choose==3) {
@@ -810,25 +808,25 @@ static void EditedMovie(ArrayList<User> user,ArrayList<Movie> movies,Admin admin
         EditedMovie( user, movies, admin,di,ca);
     }
 
-
+    /***
+     * display top movies with hearts depend on IMDB score
+     * @param movies top 10 movies
+     */
 public static void printTopTenHeartColoredBarChart(List<Movie> movies) {
-        // Sort movies by rating in descending order
-        movies.sort(Comparator.comparingInt(Movie::getUserRating).reversed());
+        movies.sort(Comparator.comparingInt(Movie::getIMDB_Score).reversed());
 
-        // Find the maximum rating to scale the bars
-        int maxRating = movies.stream().mapToInt(Movie::getUserRating).max().orElse(0);
+
+        int maxRating = movies.stream().mapToInt(Movie::getIMDB_Score).max().orElse(0);
 
         // ANSI color codes
         String ANSI_RESET = "\u001B[0m";
 
-        // Iterate through the top ten movies and print the heart-colored bar chart with rating
         int topTenCount = Math.min(10, movies.size());
         for (int i = 0; i < topTenCount; i++) {
             Movie movie = movies.get(i);
             String name = movie.getMovieTitle();
-            int rating = movie.getUserRating();
+            int rating = movie.getIMDB_Score();
 
-            // Calculate the length of the bar
             int barLength = (int) Math.ceil((double) rating / maxRating * 10);
 
             // Adjust color intensity based on the rating
