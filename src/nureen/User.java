@@ -1,6 +1,6 @@
 package nureen;
 import mitsho.*;
-import person_based_movies.ReadFiles;
+import person_based_movies.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,24 +11,17 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.SplittableRandom;
 
-public class User extends personx implements ReadFiles{
-    int age; //3shan offer films related
-
+public class User extends personx {
+    int age;
    String subscrebtion_type;
-    Subscription subscriptionPlan = new Subscription();
-    String nationality;//3shan offer films related
+    String nationality;
      ArrayList<Movie> alreadyWatched = new ArrayList<>();
     ArrayList<Integer>IDforalreadyWatched=new ArrayList<Integer>();
-
      ArrayList<Movie> FavouriteMovies = new ArrayList<>();
     ArrayList<Integer>IDforFAV=new ArrayList<Integer>() ;
-
      ArrayList<Movie> WatchLaterList = new ArrayList<Movie>();
     ArrayList<Integer>IDforLAter=new ArrayList<Integer>();
-
    ArrayList<Movie> MoviesList = Movie.getMoviesList();
-    //ArrayList<cast> MovieCast = new ArrayList<>();
-   // ArrayList<director> MovieDirector = new ArrayList<>();
      int BNoOfMovies=0;//basic 5 movies
      int SNoOfMovies=0;//standerd 10 movies
      int PNoOfMovies=0;//premium 30 movies
@@ -132,12 +125,7 @@ public class User extends personx implements ReadFiles{
     public void setSubscrebtion_type(String subscrebtion_type) {
         this.subscrebtion_type = subscrebtion_type;
     }
-    //add to watch later
-   /* public User(String nameOfmovie){
-        super();
-        FavouriteMovies.add(nameOfmovie);
 
-    }*/
     public String getSubscrebtion_type() {
         return subscrebtion_type;
     }
@@ -149,7 +137,7 @@ public class User extends personx implements ReadFiles{
      * @return array list of users that contain the data
      * @throws IOException
      */
-    public static ArrayList Read(String Path) throws IOException {
+public static ArrayList Read(String Path) throws IOException {
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         // Create a FileReader object to read the file
         FileReader fileReader = new FileReader(Path);
@@ -165,43 +153,43 @@ public class User extends personx implements ReadFiles{
                 // Process each valuezz
                 //System.out.println(value + " ");
                 /* ArrayList<Integer> watcheddata=new ArrayList<>();
-               */
-                ArrayList<Integer> favdataid=new ArrayList<Integer>();
-                ArrayList<Integer> LATER=new ArrayList<Integer>();
-                ArrayList<Integer> WATCHEDIDS=new ArrayList<Integer>();
+                 */
+                ArrayList<Integer> favdataid = new ArrayList<Integer>();
+                ArrayList<Integer> LATER = new ArrayList<Integer>();
+                ArrayList<Integer> WATCHEDIDS = new ArrayList<Integer>();
 
-              int i=10;//array of data in files
-             // int jforFAV=0;//for array od id of fav movies
+                int i = 10;//array of data in files
+                // int jforFAV=0;//for array od id of fav movies
                 //int jforLATER=0;
                 //int jforWATCHEDIDS=0;
 
-              while (!(values[i].equals("&"))){
+                while (!(values[i].equals("&"))) {
 
-                  //favdataid[jforFAV] = Integer.parseInt(values[i]);
-                  favdataid.add(Integer.parseInt(values[i]));
-                  i++;
-
-              }
-                if (values[i].equals("&")){
+                    //favdataid[jforFAV] = Integer.parseInt(values[i]);
+                    favdataid.add(Integer.parseInt(values[i]));
                     i++;
 
                 }
-                while (!(values[i].equals("$"))){
+                if (values[i].equals("&")) {
+                    i++;
+
+                }
+                while (!(values[i].equals("$"))) {
 
                     LATER.add(Integer.parseInt(values[i]));
 
                     i++;
                 }
-                if (values[i].equals("$")){
+                if (values[i].equals("$")) {
                     i++;
                 }
-                while (!(values[i].equals("#"))){
+                while (!(values[i].equals("#"))) {
 
                     WATCHEDIDS.add(Integer.parseInt(values[i]));
 
                     i++;
                 }
-                Userslist.add(new User(Integer.parseInt(values[0]), values[1], Integer.parseInt(values[2]), values[3], values[4], values[5], Integer.parseInt(values[6]), values[7], values[8],Integer.parseInt(values[9]),favdataid,LATER,WATCHEDIDS));
+                Userslist.add(new User(Integer.parseInt(values[0]), values[1], Integer.parseInt(values[2]), values[3], values[4], values[5], Integer.parseInt(values[6]), values[7], values[8], Integer.parseInt(values[9]), favdataid, LATER, WATCHEDIDS));
 
                 //return obj;
             }
@@ -213,40 +201,7 @@ public class User extends personx implements ReadFiles{
             fileReader.close();
         }
         return Userslist;
-
     }
-  /*  public ArrayList<Movie> MovieSearch(String MovieName) {
-        ArrayList<Movie> result = new ArrayList<Movie>();
-        for (Movie movie : MoviesList) {
-            if (MovieName.equals(movie.getMovieTitle())) {
-                result.add(movie);
-            }
-        }
-        return result;
-    }
-
-    public ArrayList<cast> SearchCastByName(String name) {
-        ArrayList<cast> result = new ArrayList<cast>();
-        for (cast castData : MovieCast) {
-            if (name.equals(castData.getF_name())) {
-                result.add(castData);
-            }
-        }
-        return result;
-    }*/
-   /* public ArrayList<director> SearchDirectorByName(String name) {
-        ArrayList<director> result = new ArrayList<director>();
-        for (director DirectorData : MovieDirector) {
-            if (name.equals(DirectorData.getF_name())) {
-                result.add(DirectorData);
-            }
-        }
-        return result;
-    }*/
-    /*void Add_rate(){
-
-
-    }*/
 
     /***
      *  collect all data of this user
@@ -357,24 +312,5 @@ public  void checknofmovies(Movie m,ArrayList<Movie> wa,User u) {
     public  ArrayList<Movie> getAlreadyWatched() {
         return this.alreadyWatched;
     }
-   /* public static void calculateMostRevenueMonth(ArrayList<User> Userslist) {
-
-        int maxmonth=0;
-        int max =0;
-
-        for ( int i = 1; i < 13; i++) {
-            int res=0;
-            for (User user : Userslist) {
-                if (user.mounth == i) {
-                    res += Subscription.ReturnRevenu(user.subscrebtion_type);
-                }
-            }
-            if(res>max){
-                max=res;
-                maxmonth=i;
-            }
-        }
-        System.out.println("Most Revenue Month is\n" + maxmonth);
-    }*/
 
 }

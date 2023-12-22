@@ -3,71 +3,19 @@ package mitsho;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * the class of Subscription plan
+ */
 public class Subscription {
-
-
-    protected int UserId;
-
-    //private int PlanPrice;
-   // protected LocalDate StartDate;
-    //protected LocalDate EndDate = StartDate.plusDays(30);
-
-    protected boolean is_paied;
     public static int PlanACounter = 0;//basic
     public static int PlanBCounter = 0;//standerd
     public static int PlanCCounter = 0;//premium
-    public int Movienum;
 
-
-    protected int defaultnum;
-
-    private void MovieDecreaser() {
-        if (Movie.is_watched && Movienum > 0) {
-            Movienum--;
-        } else {
-            System.out.println("Max Number of Movies is Reached");
-        }
-    }
-
-    // need adjustments
-    /*private void SubscriptionResetter() {
-        LocalDate today = LocalDate.now();
-        if (today.isEqual(EndDate)) {
-            Movienum = 0;
-        }
-    }
-
-    //ygded el subscription
-    protected void Subscriptionrenew() {
-        LocalDate today = LocalDate.now();
-        if (is_paied && today.isEqual(EndDate)) {
-            Movienum = defaultnum;
-        }
-    }*/
-
-    //revenue
-    //chose plan
-
-    //take this in user
-    public void chooseplan(String plantype) {
-        System.out.println("choose your plan");
-        Scanner input = new Scanner(System.in);
-        if (plantype.equals("basic")) {
-            PlanACounter++;
-
-        } else if (plantype.equals("standard")) {
-            PlanBCounter++;
-
-        } else if (plantype.equals("premium")) {
-            PlanCCounter++;
-
-        }
-    }
-
-    //most subscriped plan done
-
-    public static int CalcRevenu() {
-        //down casting and upcasting
+    /***
+     * collect the total revenue of the 3 plans we have
+     * @return total revenue
+     */
+public static int CalcRevenu() {
         Subscription s = new Basic();
         Basic a = (Basic) s;
 
@@ -81,11 +29,15 @@ public class Subscription {
         return res;
     }
 
-     int CalculatePriceOf3(){
+    /**
+     * calculate revenue for each plan
+     * @return revenue for each plan
+     */
+/*int CalculatePriceOf3(){
         return 0;
-     };
+     };*/
 
-    public static int ReturnRevenu(String subscrebtion_type ) {
+public static int ReturnRevenu(String subscrebtion_type ) {
 
         int  res=0;
         if (subscrebtion_type.equals("Basic")) {

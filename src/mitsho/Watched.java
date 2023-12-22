@@ -9,8 +9,6 @@ import java.util.Date;
  * watched class that inherit from movies parent  class
  */
 public class Watched extends Movie{
-    static ArrayList<Movie> watchedlist =new ArrayList<>();
-
     public Watched(boolean is_watched, String which){
         super(is_watched, "watched");
     }
@@ -19,7 +17,6 @@ public class Watched extends Movie{
      * @param usr the user that will display they list
      */
     public static void DisplayWatched(User usr){
-        //watchedlist= User.getAlreadyWatched();
         for (Movie movies:usr.getAlreadyWatched() ){
             System.out.println(movies.displaymovie());
         }

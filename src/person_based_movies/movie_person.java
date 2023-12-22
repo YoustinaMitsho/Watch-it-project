@@ -14,9 +14,6 @@ public abstract class movie_person {
 
     String L_name;
 
-
-
-
 movie_person(int age, String Gender, String nationality, String f_name, String l_name){
     this.Age=age;
     this.Gender=Gender;
@@ -25,13 +22,12 @@ movie_person(int age, String Gender, String nationality, String f_name, String l
     this.F_name=f_name;
 
 }
-movie_person(){}
+
     /**
      * collect data of the movie person
      * @return all data
      */
 public String display(){
-        //int age, String Gender, String nationality, String f_name, String l_name
         return Age+","+Gender+","+getNationality()+","+getF_name()+","+getL_name();
 
 

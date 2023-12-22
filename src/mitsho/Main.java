@@ -16,7 +16,7 @@ public class Main {
      * @param args array of string tha can take value before program work
      * @throws IOException
      */
-    public static void main(String args[]) throws IOException {
+public static void main(String args[]) throws IOException {
 
         ArrayList<Movie> movie = Movie.Read("OOP_Movies.txt");
         ArrayList<User> user = User.Read("oop_prpject_user_data.txt");
@@ -252,79 +252,6 @@ public static  void login (ArrayList<User> user, ArrayList<Movie> movies,Admin a
             DisplayUserDiscoverPg(userLogIn, movies, user,admin,di,ca);
         }
     }
-/*private static void menu_admin(ArrayList<Movie> movies,Admin admin) {
-            System.out.println("welcome admin to watch it :) ");
-            System.out.println("--------------------------------------------------------------------------");
-            System.out.println("Discover Page:");
-            System.out.println("1. display your data");
-            System.out.println("2. add movie");
-            System.out.println("3. remove movie ");
-            System.out.println("4.add director ");
-            System.out.println("5.add cast ");
-            System.out.println("6.add genre");
-            System.out.println("7.displayplannumber");
-            System.out.println("8.back");
-
-            int input;
-            Scanner scan = new Scanner(System.in);
-            input = scan.nextInt();
-            if(input == 1){
-                Admin.DisplayAdminData();
-                menu_admin(movies,admin);
-            } else if (input == 2) {
-                System.out.println("enter the movie you want to add:");
-                String added_movie = scan.next();
-               // admin.add_movie(added_movie);
-                menu_admin(movies,admin);
-            } else if (input == 3) {
-                System.out.println("enter the movie you want to remove:");
-                String removed_movie = scan.next();
-                System.out.println("enter the category you want to remove from:");
-                String category = scan.next();
-               // Admin. remove_movie(removed_movie, category);
-                menu_admin(movies,admin);
-            }
-//
-            else if(input==4)
-            {
-                System.out.println("enter director you want to add");
-                String director=scan.next();
-                //Admin.AddDirectorx(director);
-                menu_admin(movies,admin);
-
-            }
-            else if(input==5)
-            {
-                System.out.println("enter cast you want to add");
-              //  cast c=scan.next();
-                //Admin.AddCast(c);
-                menu_admin(movies,admin);
-
-            }
-            else if(input==6)
-            {
-                System.out.println("enter genre you want to add");
-                //genre g=scan.next();
-                //Admin.AddGenre(g);
-                menu_admin(movies,admin);
-
-            }
-            else if (input ==7) {
-                admin.displayplannumbers();
-                menu_admin(movies,admin);
-            }
-            /*else if (input==8) {
-                admin.DisplayRevenu();
-                menu_admin(movies, admin);
-
-            else if (input==8) {
-                //menu(use,movies)
-
-            } else{
-                System.out.println("invalid choice!" );
-                menu_admin(movies,admin);
-            }
-        }*/
     /***
      *log in admin
      * @param movies the array list of all movies we have
@@ -726,7 +653,7 @@ static void Search(ArrayList<Movie> movies, User user, ArrayList<User> users,Adm
             Search(movies, user, users,admin,di,ca);
         }
     }
-/**
+    /**
      * take name of movie from user
      */
 static void MovieSearch(){

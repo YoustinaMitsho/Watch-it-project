@@ -1,5 +1,6 @@
 package person_based_movies;
 
+import mitsho.Movie;
 import nureen.User;
 
 import java.io.BufferedReader;
@@ -12,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.SplittableRandom;
 
-public class cast extends movie_person implements ReadFiles {
+public class cast extends movie_person {
 
   public static ArrayList<cast> cast_list = new ArrayList<cast>();
 
@@ -103,7 +104,5 @@ public cast(int age, String Gender, String nationality, String f_name, String l_
             throw new RuntimeException(e);
         }
     }
-
-
 
 }

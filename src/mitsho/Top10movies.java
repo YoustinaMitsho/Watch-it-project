@@ -3,8 +3,10 @@ package mitsho;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * class Top10 that inherit t=from movie parent class
+ */
 public class Top10movies extends Movie  {
-
     /***
      * look for the top 10 movies by IMDB_score and save them in array
      * @return array that contain the top 10 movies
