@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #1f1d2b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.ProfileAboutController">
+   <left>
+      <VBox prefHeight="700.0" prefWidth="329.0" styleClass="lighter-background" stylesheets="@CSS/Styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="250.0" prefWidth="329.0">
+               <children>
+                  <VBox prefHeight="249.0" prefWidth="329.0">
+                     <children>
+                        <ImageView fitHeight="145.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/account.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="80.0" right="20.0" top="30.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label fx:id="username" text="username" textFill="WHITE">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="85.0" right="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Separator prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Separator>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="451.0" prefWidth="329.0">
+               <children>
+                  <VBox prefHeight="451.0" prefWidth="331.0">
+                     <children>
+                        <HBox prefHeight="45.0" prefWidth="329.0" styleClass="mouse-hover" stylesheets="@CSS/Styles.css">
+                           <children>
+                              <ImageView fitHeight="47.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/pencil.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" right="2.0" top="3.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Button fx:id="edit" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#SwitchToEdit" prefHeight="52.0" prefWidth="283.0" styleClass="transparent" stylesheets="@CSS/Styles.css" text="Edit" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="45.0" prefWidth="200.0" styleClass="mouse-hover" stylesheets="@CSS/Styles.css">
+                           <children>
+                              <ImageView fitHeight="47.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/calendar.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Button fx:id="sub" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#SwitchToSub" prefHeight="52.0" prefWidth="283.0" styleClass="transparent" stylesheets="@CSS/Styles.css" text="Subscription" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="45.0" prefWidth="200.0" stylesheets="@CSS/Styles.css">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/about.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" top="1.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Button fx:id="about" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="52.0" prefWidth="283.0" styleClass="transparent" stylesheets="@CSS/Styles.css" text="About us" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <styleClass>
+                              <String fx:value="mouse-hover" />
+                              <String fx:value="selected" />
+                           </styleClass>
+                        </HBox>
+                        <Button fx:id="logout" mnemonicParsing="false" onAction="#SwitchToIntro" prefHeight="55.0" prefWidth="128.0" style="-fx-background-color: #ff7427; -fx-background-radius: 50;" text="Log out" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="100.0" right="100.0" top="150.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="back" fitHeight="32.0" fitWidth="65.0" onMouseClicked="#SwitchToMain" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/back.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="15.0" right="15.0" top="45.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="About us" textFill="WHITE">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" top="37.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="Team 109:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="Welcome to Watch IT, your gateway to affordable streaming entertainment! We're a team of six enthusiasts who " textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label prefWidth="956.0" text="transformed a college project into a dynamic streaming platform designed with you in mind." textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="At Watch It, we believe that everyone should have access to premium entertainment without breaking the bank. " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="Our app combines the best features of popular streaming services with a wallet-friendly subscription model, offering" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="you an extensive library of movies and TV shows at a fraction of the cost." textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="Key Features:" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="Cost-Effective Streaming: Enjoy the same quality content as leading platforms but at a more affordable price point." textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="12.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="Diverse Content Library: Explore a rich and varied collection of movies and TV shows spanning genres, ensuring" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="there's something for every mood and taste." textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="User-Friendly Interface: Navigate seamlessly through our app with an intuitive and user-friendly interface, making your" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="streaming experience enjoyable and hassle-free." textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefWidth="956.0" text="For the termianal version check or Repo: " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="25.0" />
+               </VBox.margin>
+            </Label>
+            <Hyperlink fx:id="git" onAction="#SwitchToGitHub" prefHeight="25.0" prefWidth="961.0" text="https://github.com/YoustinaMitsho/watch-it.git">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Hyperlink>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

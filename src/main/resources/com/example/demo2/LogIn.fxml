@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #1f1d2b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.LogInController">
+   <children>
+      <ImageView fitHeight="713.0" fitWidth="626.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/intro_pic.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="711.0" fitWidth="605.0" layoutX="788.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/intro_pic.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="401.0" layoutY="28.0" prefHeight="644.0" prefWidth="498.0" style="-fx-background-color: #2c2a3d;">
+         <children>
+            <ImageView fitHeight="129.0" fitWidth="120.0" layoutX="189.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/lock.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="53.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" wrappingWidth="105.13671875">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="53.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="155.13671875">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="202.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In" wrappingWidth="95.13671875">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="tf_pass" layoutX="219.0" layoutY="340.0" prefHeight="29.0" prefWidth="250.0" />
+            <TextField fx:id="tf_mail" layoutX="189.0" layoutY="282.0" prefHeight="29.0" prefWidth="281.0" />
+            <Button fx:id="LogInBtn" layoutX="70.0" layoutY="423.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="64.0" prefWidth="359.0" style="-fx-background-color: #ff7427; -fx-background-radius: 50;" text="Log In" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="134.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an Account?" wrappingWidth="228.13671875">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="signUp" layoutX="190.0" layoutY="552.0" mnemonicParsing="false" onAction="#UserSignIn" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: #ff7427; -fx-background-radius: 50;" text="Sign up" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

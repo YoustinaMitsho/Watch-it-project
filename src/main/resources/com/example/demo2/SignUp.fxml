@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #1f1d2b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.SignUpController">
+   <children>
+      <ImageView fitHeight="713.0" fitWidth="626.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/intro_pic.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="711.0" fitWidth="608.0" layoutX="806.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/intro_pic.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="401.0" layoutY="28.0" prefHeight="644.0" prefWidth="498.0" style="-fx-background-color: #2c2a3d;">
+         <children>
+            <ImageView fitHeight="124.0" fitWidth="119.0" layoutX="190.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/add-user.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="39.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="135.13671875">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="190.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" wrappingWidth="119.0">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="tf_sign_pass" layoutX="181.0" layoutY="287.0" prefHeight="27.0" prefWidth="272.0" />
+            <TextField fx:id="tf_Sign_usrname" layoutX="181.0" layoutY="205.0" prefHeight="27.0" prefWidth="272.0" />
+            <Button fx:id="SignUpBtn" layoutX="70.0" layoutY="477.0" mnemonicParsing="false" onAction="#onSignUpButtonClick" prefHeight="64.0" prefWidth="359.0" style="-fx-background-color: #ff7427; -fx-background-radius: 50;" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="174.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already a User?" wrappingWidth="147.13671875">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="40.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="135.13671875">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tf_fname" layoutX="39.0" layoutY="329.0" prefHeight="38.0" prefWidth="204.0" promptText="First Name" />
+            <TextField fx:id="tf_lname" layoutX="249.0" layoutY="329.0" prefHeight="38.0" prefWidth="204.0" promptText="Last Name" />
+            <TextField fx:id="tf_nationality" layoutX="39.0" layoutY="372.0" prefHeight="38.0" prefWidth="204.0" promptText="Natonality" />
+            <TextField fx:id="tf_age" layoutX="249.0" layoutY="372.0" prefHeight="38.0" prefWidth="204.0" promptText="Age" />
+            <TextField fx:id="tf_sub" layoutX="39.0" layoutY="417.0" prefHeight="38.0" prefWidth="414.0" promptText="Subscription Type (Basic- Standard - Premium)" />
+            <Text fill="WHITE" layoutX="40.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" wrappingWidth="135.13671875">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tf_sign_mail" layoutX="182.0" layoutY="245.0" prefHeight="27.0" prefWidth="272.0" />
+            <Button fx:id="Login" layoutX="190.0" layoutY="583.0" mnemonicParsing="false" onAction="#onLogInBtnClicked" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: #ff7427; -fx-background-radius: 50;" text="Log In" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

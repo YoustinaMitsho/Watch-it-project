@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #1f1d2b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.GenreScreenController">
+   <top>
+      <HBox prefHeight="71.0" prefWidth="1300.0" styleClass="lighter-background" stylesheets="@CSS/Styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="71.0" prefWidth="205.0" styleClass="white-background" stylesheets="@CSS/Styles.css" text="  Watch It" textFill="WHITE">
+               <font>
+                  <Font name="Baskerville Old Face" size="46.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="290.0" spacing="20.0" style="-fx-background-color: #2c2a3d; -fx-background-radius: 25;" styleClass="round-layout" stylesheets="@CSS/Styles.css">
+               <HBox.margin>
+                  <Insets left="10.0" top="20.0" />
+               </HBox.margin>
+               <children>
+                  <TextField prefHeight="25.0" prefWidth="266.0" promptText="Search...." style="-fx-background-color: #2c2a3d; -fx-background-radius: 40;" stylesheets="@CSS/Styles.css">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="35.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/search.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="15.0" right="8.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Pane prefHeight="71.0" prefWidth="424.0" styleClass="white-background" stylesheets="@CSS/Styles.css" />
+            <HBox prefHeight="71.0" prefWidth="358.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="71.0" prefWidth="267.0" text="Username" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="42.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="profile" fitHeight="61.0" fitWidth="58.0" onMouseClicked="#SwitchToProfile" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/account.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="7.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="629.0" prefWidth="208.0" styleClass="lighter-background" stylesheets="@CSS/Styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="188.0" prefWidth="208.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="99.0" text="Browse" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="45.0" prefWidth="208.0" stylesheets="@CSS/Styles.css">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/cinema.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="16.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="top" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#SwitchToTop" prefHeight="44.0" prefWidth="161.0" styleClass="transparent" stylesheets="@CSS/Styles.css" text="Top" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="mouse-hover" />
+                        <String fx:value="transparent" />
+                     </styleClass>
+                  </HBox>
+                  <HBox prefHeight="45.0" prefWidth="208.0" stylesheets="@CSS/Styles.css">
+                     <children>
+                        <ImageView fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/compass%20(1).png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="18.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="discover" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#SwitchToDescover" prefHeight="44.0" prefWidth="161.0" styleClass="transparent" stylesheets="@CSS/Styles.css" text="Discover" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="mouse-hover" />
+                        <String fx:value="transparent" />
+                     </styleClass>
+                  </HBox>
+                  <HBox prefHeight="45.0" prefWidth="208.0" stylesheets="@CSS/Styles.css">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/theater-masks.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="16.0" top="7.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="68.0" text="Genre" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="mouse-hover" />
+                        <String fx:value="selected" />
+                     </styleClass>
+                  </HBox>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+               </children>
+            </VBox>
+            <VBox prefHeight="186.0" prefWidth="208.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="127.0" text="Your Lists" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="45.0" prefWidth="208.0" styleClass="mouse-hover" stylesheets="@CSS/Styles.css">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/bookmark%20(1).png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="18.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="44.0" prefWidth="144.0" text="Watch Later" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="45.0" prefWidth="208.0" styleClass="mouse-hover" stylesheets="@CSS/Styles.css">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/star.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="17.0" top="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="44.0" prefWidth="118.0" text="Favourite" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="45.0" prefWidth="208.0" styleClass="mouse-hover" stylesheets="@CSS/Styles.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/refresh%20(1).png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="16.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="87.0" text="History" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Separator prefHeight="0.0" prefWidth="208.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="240.0" prefWidth="100.0" styleClass="transparent" stylesheets="@CSS/Styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane prefHeight="240.0" prefWidth="1092.0" styleClass="scrollPane2" stylesheets="@CSS/Styles.css" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <content>
+                  <VBox prefHeight="618.0" prefWidth="1081.0" stylesheets="@CSS/Styles.css">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="88.0" text="Fantasy" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minViewportHeight="200.0" prefViewportHeight="225.0" prefWidth="1092.0" styleClass="scrollPane2" stylesheets="@CSS/Styles.css">
+                           <content>
+                              <GridPane fx:id="fantasy" prefHeight="5.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ScrollPane>
+                        <Label prefWidth="106.0" text="Romance" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minViewportHeight="200.0" prefHeight="240.0" prefViewportHeight="225.0" prefWidth="1092.0" styleClass="scrollPane2" stylesheets="@CSS/Styles.css">
+                           <content>
+                              <GridPane fx:id="romance" prefHeight="5.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ScrollPane>
+                        <Label prefHeight="35.0" prefWidth="106.0" text="Comedy" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minViewportHeight="200.0" prefViewportHeight="225.0" prefWidth="1092.0" styleClass="scrollPane2" stylesheets="@CSS/Styles.css">
+                           <content>
+                              <GridPane fx:id="comedy" prefHeight="5.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ScrollPane>
+                        <Label prefHeight="35.0" prefWidth="154.0" text="Animation" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minViewportHeight="200.0" prefViewportHeight="225.0" prefWidth="1092.0" styleClass="scrollPane2" stylesheets="@CSS/Styles.css">
+                           <content>
+                              <GridPane fx:id="animation" prefHeight="5.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ScrollPane>
+                        <Label prefHeight="35.0" prefWidth="106.0" text="Horror" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minViewportHeight="200.0" prefViewportHeight="225.0" prefWidth="1092.0" styleClass="scrollPane2" stylesheets="@CSS/Styles.css">
+                           <content>
+                              <GridPane fx:id="horror" prefHeight="5.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ScrollPane>
+                        <Label prefHeight="35.0" prefWidth="106.0" text="Drama" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minViewportHeight="200.0" prefViewportHeight="225.0" prefWidth="1092.0" styleClass="scrollPane2" stylesheets="@CSS/Styles.css">
+                           <content>
+                              <GridPane fx:id="drama" prefHeight="5.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ScrollPane>
+                        <Label prefHeight="35.0" prefWidth="106.0" text="Mystery" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minViewportHeight="200.0" prefViewportHeight="225.0" prefWidth="1092.0" styleClass="scrollPane2" stylesheets="@CSS/Styles.css">
+                           <content>
+                              <GridPane fx:id="mystery" prefHeight="5.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

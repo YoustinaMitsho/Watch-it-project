@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0" prefWidth="330.0" style="-fx-background-radius: 15;" styleClass="shadow" stylesheets="@CSS/Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.CardController">
+   <children>
+      <VBox prefHeight="195.0" prefWidth="132.0" style="-fx-background-radius: 15;">
+         <children>
+            <ImageView fx:id="Poster" fitHeight="169.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Posters/barbie.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="8.0" right="8.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <Label fx:id="Title" prefHeight="45.0" prefWidth="194.0" style="-fx-background-radius: 15;" text="Barbie" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="8.0" top="70.0" />
+         </HBox.margin>
+      </Label>
+   </children>
+</HBox>
