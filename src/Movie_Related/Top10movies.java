@@ -1,6 +1,5 @@
-package mitsho;
+package Movie_Related;
 
-import java.io.IOException;
 import java.util.*;
 
 /**

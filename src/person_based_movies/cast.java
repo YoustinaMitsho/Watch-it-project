@@ -1,17 +1,12 @@
 package person_based_movies;
 
-import mitsho.Movie;
-import nureen.User;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.SplittableRandom;
 
 public class cast extends movie_person {
 

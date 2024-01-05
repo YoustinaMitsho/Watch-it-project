@@ -1,6 +1,5 @@
-package nureen;
-import mitsho.*;
-import person_based_movies.*;
+package person_based_app;
+import Movie_Related.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.SplittableRandom;
 
 public class User extends personx {
     int age;

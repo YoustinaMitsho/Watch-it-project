@@ -1,7 +1,4 @@
-package mitsho;
-
-import java.time.LocalDate;
-import java.util.Scanner;
+package Movie_Related;
 
 /**
  * the class of Subscription plan

@@ -1,8 +1,7 @@
-package nureen;
+package person_based_app;
 
-import mitsho.*;
-import mitsho.Movie;
-import mitsho.Subscription;
+import Movie_Related.Movie;
+import Movie_Related.Subscription;
 import person_based_movies.cast;
 import person_based_movies.director;
 

@@ -1,7 +1,5 @@
 package person_based_movies;
-import mitsho.Watched;
 
-import java.util.ArrayList;
 public abstract class movie_person {
     public int Age ;
     public String Gender;

@@ -1,15 +1,11 @@
 package person_based_movies;
 
-import mitsho.Movie;
-import nureen.User;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class director extends movie_person {

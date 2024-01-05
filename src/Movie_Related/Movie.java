@@ -1,6 +1,5 @@
-package mitsho;
+package Movie_Related;
 
-import person_based_movies.*;
 import person_based_movies.cast;
 import person_based_movies.director;
 
@@ -19,25 +18,25 @@ public class Movie  {
     static ArrayList<Movie> MoviesList = new ArrayList<Movie>();
     private int MovieId;
     private String MovieTitle;
-    int MovieDate;
-    int MovieTime;
+    private int MovieDate;
+    private int MovieTime;
     ArrayList<cast> MovieCast = new ArrayList<cast>();
     ArrayList<director> MovieDirector = new ArrayList<director>();
-    String MovieLanguage;
-    int IMDB_Score;
+    private String MovieLanguage;
+    private int IMDB_Score;
 
     public int getUserRating() {
         return UserRating;
     }
 
-    int UserRating;
-    String MovieCountry;
-    String MovieBudget;
-    String MovieRevenue;
+    private int UserRating;
+    private String MovieCountry;
+    private String MovieBudget;
+    private String MovieRevenue;
     public static boolean is_watched = false;
     public static boolean is_favourite;
     public static boolean is_WatchLater;
-    String genera;
+    private String genera;
     String discription;
     String F1_cast;
     String s1_cast;
@@ -172,6 +171,13 @@ public class Movie  {
 
     public int getIMDB_Score() {
         return IMDB_Score;
+    }
+
+    public int getMovieDate() {
+        return MovieDate;
+    }
+    public void setUserRating(int userRating) {
+        UserRating = userRating;
     }
 
     /**

@@ -1,14 +1,9 @@
-package mitsho;
-import com.sun.jdi.VMCannotBeModifiedException;
-import nureen.*;
+package Movie_Related;
+import person_based_app.*;
 import person_based_movies.*;
-import nureen.User;
+import person_based_app.User;
 
-import java.io.CharArrayReader;
-import java.io.Console;
 import java.io.IOException;
-import java.security.spec.RSAOtherPrimeInfo;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Main {
@@ -710,7 +705,7 @@ static void displayMovies(User user, ArrayList<Movie> movies, ArrayList<User> us
            ArrayList<Movie> Recent= Movie.UpCommingMovies();
             int i=1;
             for (Movie mo:Recent) {
-                System.out.println(i+" : "+mo.getMovieTitle()+" "+mo.MovieDate+" and discreption "+mo.discription);
+                System.out.println(i+" : "+mo.getMovieTitle()+" "+mo.getMovieDate()+" and discreption "+mo.discription);
                 ++i;
             }
             displayMovies(user, movies, users,admin,di,ca);
@@ -767,7 +762,7 @@ Scanner scan=new Scanner(System.in);
 public static void addtare(ArrayList<Movie>movies,int id,int rate){
     for (Movie m:movies) {
         if (m.getMovieId()==id){
-            m.UserRating=rate;
+            m.setUserRating(rate);
             System.out.println("added rating done :) ");
         }
     }

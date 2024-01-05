@@ -1,4 +1,4 @@
-package mitsho;
+package Movie_Related;
 /***
  * class Standard that inherit from Subscription parent class
  */

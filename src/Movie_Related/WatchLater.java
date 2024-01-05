@@ -1,9 +1,5 @@
-package mitsho;
-import nureen.User;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Date;
+package Movie_Related;
+import person_based_app.User;
 
 /**
  * watchlater that inherit from movie parent class

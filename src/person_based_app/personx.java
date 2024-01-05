@@ -1,4 +1,4 @@
-package nureen;
+package person_based_app;
 
 public abstract class personx {
 
